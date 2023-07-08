@@ -154,7 +154,7 @@
     (property "Footprint" "Custom_Module:RPi_Pico_SMD_TH" (at 0 0 90)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Datasheet" "" (at 0 0 0)
+    (property "Datasheet" "https://datasheets.raspberrypi.com/pico/pico-datasheet.pdf" (at 0 0 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (symbol "Pico_0_0"
@@ -353,7 +353,7 @@
     (property "Footprint" "Custom_Module:RPi_Pico_TH_Socket" (at 0 0 90)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Datasheet" "" (at 0 0 0)
+    (property "Datasheet" "https://datasheets.raspberrypi.com/pico/pico-datasheet.pdf" (at 0 0 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (symbol "Pico_H_0_0"
