@@ -1,0 +1,306 @@
+(footprint "DFN-8-1EP_2x2mm_P0.5mm_EP0.9x1.5mm"
+	(version 20240108)
+	(generator "pcbnew")
+	(generator_version "8.0")
+	(layer "F.Cu")
+	(descr "DFN, 8 Pin (http://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-8127-AVR-8-bit-Microcontroller-ATtiny4-ATtiny5-ATtiny9-ATtiny10_Datasheet.pdf), generated with kicad-footprint-generator ipc_noLead_generator.py")
+	(tags "DFN NoLead")
+	(property "Reference" "REF**"
+		(at 0 -1.95 0)
+		(layer "F.SilkS")
+		(uuid "72bde366-fbfd-4907-a918-4fd6d7a7cf32")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "DFN-8-1EP_2x2mm_P0.5mm_EP0.9x1.5mm"
+		(at 0 1.95 0)
+		(layer "F.Fab")
+		(uuid "379ea604-675d-40ab-8c00-0831ddb2b548")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Footprint" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "c324b8f9-341f-4e74-84a3-748e18c6b8cf")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "9f4ea623-a6ef-47cf-8deb-b13bae420c4c")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "5e0e57e2-dd81-4fa7-a002-ba7ebc33545a")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(fp_line
+		(start -1 -1.135)
+		(end 1 -1.135)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "862e099c-9938-4d1e-82f2-0ea6f8d257dd")
+	)
+	(fp_line
+		(start -1 1.135)
+		(end 1 1.135)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "d98598ad-f60c-4784-8cb9-83cbde21b8c3")
+	)
+	(fp_poly
+		(pts
+			(xy -1.52 -1.05) (xy -1.8 -1.05) (xy -1.52 -1.33) (xy -1.52 -1.05)
+		)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(fill solid)
+		(layer "F.SilkS")
+		(uuid "8e690353-0c00-4b47-9ea5-2bfdab6e98e8")
+	)
+	(fp_line
+		(start -1.6 -1.25)
+		(end -1.6 1.25)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "cd5ff31e-5820-4818-b273-eca4913711b8")
+	)
+	(fp_line
+		(start -1.6 1.25)
+		(end 1.6 1.25)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "fcc172c2-a3f4-44d9-b3d5-97c008a7933c")
+	)
+	(fp_line
+		(start 1.6 -1.25)
+		(end -1.6 -1.25)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "fa171da6-8f17-4d65-bb15-6dac8b95a29e")
+	)
+	(fp_line
+		(start 1.6 1.25)
+		(end 1.6 -1.25)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "69fc75fa-fc24-446d-b55a-ca9c976159cd")
+	)
+	(fp_line
+		(start -1 -0.5)
+		(end -0.5 -1)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "bd7de218-4364-460e-bea3-6b038b96248b")
+	)
+	(fp_line
+		(start -1 1)
+		(end -1 -0.5)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "85b883e9-ff08-4783-b2a1-1ccf69c26534")
+	)
+	(fp_line
+		(start -0.5 -1)
+		(end 1 -1)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "45a98e89-3258-4462-9fe3-0651f5d5a9b7")
+	)
+	(fp_line
+		(start 1 -1)
+		(end 1 1)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "a691e560-7fb2-4611-b8bd-3b81fc364bf7")
+	)
+	(fp_line
+		(start 1 1)
+		(end -1 1)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "573680c8-cd0b-4c68-bebc-98c301f80b62")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(uuid "19300319-6369-467f-a674-0af365db1eb7")
+		(effects
+			(font
+				(size 0.5 0.5)
+				(thickness 0.08)
+			)
+		)
+	)
+	(pad "" smd roundrect
+		(at -0.225 -0.375)
+		(size 0.36 0.6)
+		(layers "F.Paste")
+		(roundrect_rratio 0.25)
+		(uuid "1ffb1495-3f11-4ada-a931-37014aaf8e1d")
+	)
+	(pad "" smd roundrect
+		(at -0.225 0.375)
+		(size 0.36 0.6)
+		(layers "F.Paste")
+		(roundrect_rratio 0.25)
+		(uuid "863593a3-44e8-4e37-b0c4-c2f947e3283f")
+	)
+	(pad "" smd roundrect
+		(at 0.225 -0.375)
+		(size 0.36 0.6)
+		(layers "F.Paste")
+		(roundrect_rratio 0.25)
+		(uuid "497847c1-c33c-4bc0-88a9-ddf2d84d841e")
+	)
+	(pad "" smd roundrect
+		(at 0.225 0.375)
+		(size 0.36 0.6)
+		(layers "F.Paste")
+		(roundrect_rratio 0.25)
+		(uuid "5d38d530-6428-4a05-972c-98057895b39e")
+	)
+	(pad "1" smd roundrect
+		(at -1 -0.75)
+		(size 0.7 0.25)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(roundrect_rratio 0.25)
+		(uuid "d10c8a56-74f8-4563-9065-a8ec89534a23")
+	)
+	(pad "2" smd roundrect
+		(at -1 -0.25)
+		(size 0.7 0.25)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(roundrect_rratio 0.25)
+		(uuid "5dbd6790-9342-4dda-9316-9289f56c1b20")
+	)
+	(pad "3" smd roundrect
+		(at -1 0.25)
+		(size 0.7 0.25)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(roundrect_rratio 0.25)
+		(uuid "fe390daf-b514-4cae-95e7-fde90a8df2f3")
+	)
+	(pad "4" smd roundrect
+		(at -1 0.75)
+		(size 0.7 0.25)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(roundrect_rratio 0.25)
+		(uuid "5ebedb71-3126-40dd-88a0-4d5b247e6b46")
+	)
+	(pad "5" smd roundrect
+		(at 1 0.75)
+		(size 0.7 0.25)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(roundrect_rratio 0.25)
+		(uuid "ac8f7e69-423d-40f8-b5bc-19eb2abd6ec0")
+	)
+	(pad "6" smd roundrect
+		(at 1 0.25)
+		(size 0.7 0.25)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(roundrect_rratio 0.25)
+		(uuid "d486c1d7-f321-449a-acf4-3bc8d8f5b89b")
+	)
+	(pad "7" smd roundrect
+		(at 1 -0.25)
+		(size 0.7 0.25)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(roundrect_rratio 0.25)
+		(uuid "e5e55a4a-3d42-40a3-8bf4-018295048904")
+	)
+	(pad "8" smd roundrect
+		(at 1 -0.75)
+		(size 0.7 0.25)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(roundrect_rratio 0.25)
+		(uuid "be69a6b4-ac11-45c1-9926-72a3ba7d5ff7")
+	)
+	(pad "9" smd rect
+		(at 0 0)
+		(size 0.9 1.5)
+		(property pad_prop_heatsink)
+		(layers "F.Cu" "F.Mask")
+		(zone_connect 2)
+		(uuid "080b1950-f74a-4831-9e9c-463fcadbeffa")
+	)
+	(model "${KICAD8_3DMODEL_DIR}/Package_DFN_QFN.3dshapes/DFN-8_2x2mm_P0.5mm.step"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
+)
