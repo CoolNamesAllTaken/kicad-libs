@@ -1,9 +1,9 @@
-(footprint "TE_Connectivity_16.50x16.50mm"
+(footprint "TE_Connectivity_2118716-2_2PC_Shield_16.50x16.50mm"
 	(version 20240108)
 	(generator "pcbnew")
 	(generator_version "8.0")
 	(layer "F.Cu")
-	(descr "TE Connectivity One Piece SMD 16.50x16.50mm")
+	(descr "TE Connectivity Two Piece SMD 16.50x16.50mm")
 	(tags "RF Shield Can")
 	(property "Reference" "REF**"
 		(at 0 -9.65 0)
@@ -16,7 +16,7 @@
 			)
 		)
 	)
-	(property "Value" "TE_Connectivity_2118707-2_1PC_Shield_16.50mmx16.50x3.60mm_SMD"
+	(property "Value" "TE_Connectivity_2118716-2_2PC_Shield_16.50mmx16.50x3.60mm_SMD"
 		(at 0 9.65 0)
 		(layer "F.Fab")
 		(uuid "02e6dc6e-0590-40bd-892a-2ec1705a5165")
@@ -53,7 +53,7 @@
 			)
 		)
 	)
-	(property "Description" "1 PC STD SHIELD, 16.50X16.50X3.60MM"
+	(property "Description" "2 PC STD SHIELD, 16.50X16.50X3.60MM"
 		(at 0 0 0)
 		(unlocked yes)
 		(layer "F.Fab")
@@ -374,7 +374,7 @@
 		(layers "F.Cu" "F.Paste" "F.Mask")
 		(uuid "e63b016d-0ab1-4dbb-891b-7cc10913b7df")
 	)
-	(model "${KICAD_LIBS_DIR}/lib_3d/Custom_RF_Shielding/TE_Connectivity_2118707-2_1PC_Shield_16.50mmx16.50x3.60mm_SMD.step"
+	(model "${KICAD_LIBS_DIR}/lib_3d/Custom_RF_Shielding/TE_Connectivity_2118716-2_2PC_Shield_16.50mmx16.50x3.60mm_SMD_Frame.stp"
 		(offset
 			(xyz 0 0 0)
 		)
@@ -383,6 +383,17 @@
 		)
 		(rotate
 			(xyz 0 180 0)
+		)
+	)
+	(model "${KICAD_LIBS_DIR}/lib_3d/Custom_RF_Shielding/TE_Connectivity_2118715-2_2PC_Shield_16.50mmx16.50x3.60mm_SMD_Cover.stp"
+		(offset
+			(xyz 0 0 2)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 180 0 0)
 		)
 	)
 )

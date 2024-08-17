@@ -38,6 +38,7 @@
 		(effects
 			(font
 				(size 1.27 1.27)
+				(thickness 0.15)
 			)
 		)
 	)
@@ -50,6 +51,7 @@
 		(effects
 			(font
 				(size 1.27 1.27)
+				(thickness 0.15)
 			)
 		)
 	)
@@ -62,6 +64,7 @@
 		(effects
 			(font
 				(size 1.27 1.27)
+				(thickness 0.15)
 			)
 		)
 	)
@@ -86,16 +89,6 @@
 		(layer "F.SilkS")
 		(uuid "ef2585f8-603b-4391-8d77-c60585673e72")
 	)
-	(fp_line
-		(start 5 3.675)
-		(end -5 3.675)
-		(stroke
-			(width 0.1)
-			(type solid)
-		)
-		(layer "Dwgs.User")
-		(uuid "1b0efba6-6f62-4b3b-9769-b406a0b4fcfd")
-	)
 	(fp_rect
 		(start -5.32 -4.76)
 		(end 5.32 4.18)
@@ -117,18 +110,6 @@
 		(fill none)
 		(layer "F.Fab")
 		(uuid "15e5f594-7c56-466a-af18-f0519ee4643f")
-	)
-	(fp_text user "PCB Edge"
-		(at 0 3.1 0)
-		(unlocked yes)
-		(layer "Dwgs.User")
-		(uuid "c7ea6cd0-75e4-49f1-bf60-aaeb5b1ee23c")
-		(effects
-			(font
-				(size 0.5 0.5)
-				(thickness 0.1)
-			)
-		)
 	)
 	(fp_text user "${REFERENCE}"
 		(at 0 0 0)
