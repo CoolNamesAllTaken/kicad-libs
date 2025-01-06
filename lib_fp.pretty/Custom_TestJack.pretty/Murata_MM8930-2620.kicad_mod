@@ -454,7 +454,7 @@
 			)
 		)
 	)
-	(model "${KICAD_LIBS_DIR}/lib_3d/Custom_TestPoint/Murata_MM8930-2620.step"
+	(model "${KICAD_LIBS_DIR}/lib_3d/Custom_TestJack/Murata_MM8930-2620.step"
 		(offset
 			(xyz 0 0 0)
 		)
