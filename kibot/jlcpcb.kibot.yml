@@ -59,6 +59,10 @@ outputs:
       - F.Mask
       - B.Mask
       - Edge.Cuts
+      - User.Drawings
+      - User.Comments
+      - User.Eco1
+      - User.Eco2
 
   - name: JLCPCB_drill
     comment: Drill files compatible with JLCPCB
