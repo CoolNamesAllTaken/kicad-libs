@@ -4,7 +4,7 @@
 	(generator_version "8.0")
 	(layer "F.Cu")
 	(property "Reference" "REF**"
-		(at 0 -0.5 0)
+		(at 0 -9.2 0)
 		(unlocked yes)
 		(layer "F.SilkS")
 		(uuid "bde93fed-27df-4635-b9d1-1f7c73c32bdf")
@@ -67,17 +67,6 @@
 		)
 	)
 	(attr smd)
-	(fp_rect
-		(start -7.5 -7.5)
-		(end 7.5 7.5)
-		(stroke
-			(width 1.5)
-			(type default)
-		)
-		(fill none)
-		(layer "F.Cu")
-		(uuid "560370d1-b007-4299-9770-a4c4779109e1")
-	)
 	(fp_text user "${REFERENCE}"
 		(at 0 2.5 0)
 		(unlocked yes)
@@ -89,6 +78,25 @@
 				(thickness 0.15)
 			)
 		)
+	)
+	(pad "1" smd custom
+		(at 0 -7.4)
+		(size 0.6 0.7)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(thermal_bridge_angle 45)
+		(options
+			(clearance outline)
+			(anchor rect)
+		)
+		(primitives
+			(gr_rect
+				(start -7.4 0)
+				(end 7.4 14.8)
+				(width 1.5)
+				(fill no)
+			)
+		)
+		(uuid "c1eb8f0f-6380-48c2-ba73-a7b6e1652af7")
 	)
 	(model "${KICAD_LIBS_DIR}/lib_3d/Custom_RF_Shielding/PantsForBirds_PFB148-20F.step"
 		(offset
