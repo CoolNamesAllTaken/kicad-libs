@@ -643,422 +643,726 @@
 			(justify left bottom mirror)
 		)
 	)
-	(pad "1" smd roundrect
-		(at -11 7 270)
-		(size 3 1.2)
-		(drill
-			(offset 0.5 0)
-		)
+	(pad "1" smd custom
+		(at -11 7.3 270)
+		(size 1.75 1.2)
 		(layers "B.Cu" "B.Mask" "B.Paste")
-		(roundrect_rratio 0.1666666667)
 		(thermal_bridge_angle 45)
+		(options
+			(clearance outline)
+			(anchor rect)
+		)
+		(primitives
+			(gr_rect
+				(start -0.975 -0.45)
+				(end -0.825 0.45)
+				(width 0.3)
+				(fill yes)
+			)
+		)
 		(uuid "ae875f0d-7a9b-4b3b-a97e-744b643b6e05")
 	)
-	(pad "2" smd roundrect
-		(at -9 7 270)
-		(size 3 1.2)
-		(drill
-			(offset 0.5 0)
-		)
+	(pad "2" smd custom
+		(at -9 7.3 270)
+		(size 1.75 1.2)
 		(layers "B.Cu" "B.Mask" "B.Paste")
-		(roundrect_rratio 0.1666666667)
 		(thermal_bridge_angle 45)
+		(options
+			(clearance outline)
+			(anchor rect)
+		)
+		(primitives
+			(gr_rect
+				(start -0.975 -0.45)
+				(end -0.825 0.45)
+				(width 0.3)
+				(fill yes)
+			)
+		)
 		(uuid "5074abbf-c239-4f05-b74f-f28fb1224bb4")
 	)
-	(pad "3" smd roundrect
-		(at -7 7 270)
-		(size 3 1.2)
-		(drill
-			(offset 0.5 0)
-		)
+	(pad "3" smd custom
+		(at -7 7.3 270)
+		(size 1.75 1.2)
 		(layers "B.Cu" "B.Mask" "B.Paste")
-		(roundrect_rratio 0.1666666667)
 		(thermal_bridge_angle 45)
+		(options
+			(clearance outline)
+			(anchor rect)
+		)
+		(primitives
+			(gr_rect
+				(start -0.975 -0.45)
+				(end -0.825 0.45)
+				(width 0.3)
+				(fill yes)
+			)
+		)
 		(uuid "14556b0a-3171-4c25-809b-3cbe153ce106")
 	)
-	(pad "4" smd roundrect
-		(at -5 7 270)
-		(size 3 1.2)
-		(drill
-			(offset 0.5 0)
-		)
+	(pad "4" smd custom
+		(at -5 7.3 270)
+		(size 1.75 1.2)
 		(layers "B.Cu" "B.Mask" "B.Paste")
-		(roundrect_rratio 0.1666666667)
 		(thermal_bridge_angle 45)
+		(options
+			(clearance outline)
+			(anchor rect)
+		)
+		(primitives
+			(gr_rect
+				(start -0.975 -0.45)
+				(end -0.825 0.45)
+				(width 0.3)
+				(fill yes)
+			)
+		)
 		(uuid "46167c79-f92b-4e36-b94a-58f9e88fc6a5")
 	)
-	(pad "5" smd roundrect
-		(at -3 7 270)
-		(size 3 1.2)
-		(drill
-			(offset 0.5 0)
-		)
+	(pad "5" smd custom
+		(at -3 7.3 270)
+		(size 1.75 1.2)
 		(layers "B.Cu" "B.Mask" "B.Paste")
-		(roundrect_rratio 0.1666666667)
 		(thermal_bridge_angle 45)
+		(options
+			(clearance outline)
+			(anchor rect)
+		)
+		(primitives
+			(gr_rect
+				(start -0.975 -0.45)
+				(end -0.825 0.45)
+				(width 0.3)
+				(fill yes)
+			)
+		)
 		(uuid "c8e45eec-26f8-440b-85e9-7bf02857750e")
 	)
-	(pad "6" smd roundrect
-		(at -1 7 270)
-		(size 3 1.2)
-		(drill
-			(offset 0.5 0)
-		)
+	(pad "6" smd custom
+		(at -1 7.3 270)
+		(size 1.75 1.2)
 		(layers "B.Cu" "B.Mask" "B.Paste")
-		(roundrect_rratio 0.1666666667)
 		(thermal_bridge_angle 45)
+		(options
+			(clearance outline)
+			(anchor rect)
+		)
+		(primitives
+			(gr_rect
+				(start -0.975 -0.45)
+				(end -0.825 0.45)
+				(width 0.3)
+				(fill yes)
+			)
+		)
 		(uuid "92c0a42e-8b36-41ff-95fc-ccee298f9864")
 	)
-	(pad "7" smd roundrect
-		(at 1 7 270)
-		(size 3 1.2)
-		(drill
-			(offset 0.5 0)
-		)
+	(pad "7" smd custom
+		(at 1 7.3 270)
+		(size 1.75 1.2)
 		(layers "B.Cu" "B.Mask" "B.Paste")
-		(roundrect_rratio 0.1666666667)
 		(thermal_bridge_angle 45)
+		(options
+			(clearance outline)
+			(anchor rect)
+		)
+		(primitives
+			(gr_rect
+				(start -0.975 -0.45)
+				(end -0.825 0.45)
+				(width 0.3)
+				(fill yes)
+			)
+		)
 		(uuid "7bee1c0f-52bc-4fff-bee4-9a92badae6d9")
 	)
-	(pad "8" smd roundrect
-		(at 3 7 270)
-		(size 3 1.2)
-		(drill
-			(offset 0.5 0)
-		)
+	(pad "8" smd custom
+		(at 3 7.3 270)
+		(size 1.75 1.2)
 		(layers "B.Cu" "B.Mask" "B.Paste")
-		(roundrect_rratio 0.1666666667)
 		(thermal_bridge_angle 45)
+		(options
+			(clearance outline)
+			(anchor rect)
+		)
+		(primitives
+			(gr_rect
+				(start -0.975 -0.45)
+				(end -0.825 0.45)
+				(width 0.3)
+				(fill yes)
+			)
+		)
 		(uuid "5f17b6cf-65e7-448e-a643-ed0441e48e46")
 	)
-	(pad "9" smd roundrect
-		(at 5 7 270)
-		(size 3 1.2)
-		(drill
-			(offset 0.5 0)
-		)
+	(pad "9" smd custom
+		(at 5 7.3 270)
+		(size 1.75 1.2)
 		(layers "B.Cu" "B.Mask" "B.Paste")
-		(roundrect_rratio 0.1666666667)
 		(thermal_bridge_angle 45)
+		(options
+			(clearance outline)
+			(anchor rect)
+		)
+		(primitives
+			(gr_rect
+				(start -0.975 -0.45)
+				(end -0.825 0.45)
+				(width 0.3)
+				(fill yes)
+			)
+		)
 		(uuid "f40e383f-1be3-45b4-b0f2-aae458c6e6ab")
 	)
-	(pad "10" smd roundrect
-		(at 7 7 270)
-		(size 3 1.2)
-		(drill
-			(offset 0.5 0)
-		)
+	(pad "10" smd custom
+		(at 7 7.3 270)
+		(size 1.75 1.2)
 		(layers "B.Cu" "B.Mask" "B.Paste")
-		(roundrect_rratio 0.1666666667)
 		(thermal_bridge_angle 45)
+		(options
+			(clearance outline)
+			(anchor rect)
+		)
+		(primitives
+			(gr_rect
+				(start -0.975 -0.45)
+				(end -0.825 0.45)
+				(width 0.3)
+				(fill yes)
+			)
+		)
 		(uuid "dac8f8e6-8853-4a8e-8523-3f961b43b567")
 	)
-	(pad "11" smd roundrect
-		(at 9 7 270)
-		(size 3 1.2)
-		(drill
-			(offset 0.5 0)
-		)
+	(pad "11" smd custom
+		(at 9 7.3 270)
+		(size 1.75 1.2)
 		(layers "B.Cu" "B.Mask" "B.Paste")
-		(roundrect_rratio 0.1666666667)
 		(thermal_bridge_angle 45)
+		(options
+			(clearance outline)
+			(anchor rect)
+		)
+		(primitives
+			(gr_rect
+				(start -0.975 -0.45)
+				(end -0.825 0.45)
+				(width 0.3)
+				(fill yes)
+			)
+		)
 		(uuid "42aa919e-f85c-4c97-8425-ce3bb649f825")
 	)
-	(pad "12" smd roundrect
-		(at 11 7 270)
-		(size 3 1.2)
-		(drill
-			(offset 0.5 0)
-		)
+	(pad "12" smd custom
+		(at 11 7.3 270)
+		(size 1.75 1.2)
 		(layers "B.Cu" "B.Mask" "B.Paste")
-		(roundrect_rratio 0.1666666667)
 		(thermal_bridge_angle 45)
+		(options
+			(clearance outline)
+			(anchor rect)
+		)
+		(primitives
+			(gr_rect
+				(start -0.975 -0.45)
+				(end -0.825 0.45)
+				(width 0.3)
+				(fill yes)
+			)
+		)
 		(uuid "f3f6e008-dd8f-4732-95e3-96f5210170eb")
 	)
-	(pad "13" smd roundrect
-		(at 14 6)
-		(size 3 1.2)
-		(drill
-			(offset 0.5 0)
-		)
+	(pad "13" smd custom
+		(at 14.1 6)
+		(size 1.75 1.2)
 		(layers "B.Cu" "B.Mask" "B.Paste")
-		(roundrect_rratio 0.1666666667)
 		(thermal_bridge_angle 45)
+		(options
+			(clearance outline)
+			(anchor rect)
+		)
+		(primitives
+			(gr_rect
+				(start -0.975 -0.45)
+				(end -0.825 0.45)
+				(width 0.3)
+				(fill yes)
+			)
+		)
 		(uuid "52e3e53d-42f5-47ef-b2f6-d92bc9d7fb60")
 	)
-	(pad "14" smd roundrect
-		(at 14 4)
-		(size 3 1.2)
-		(drill
-			(offset 0.5 0)
-		)
+	(pad "14" smd custom
+		(at 14.1 4)
+		(size 1.75 1.2)
 		(layers "B.Cu" "B.Mask" "B.Paste")
-		(roundrect_rratio 0.1666666667)
 		(thermal_bridge_angle 45)
+		(options
+			(clearance outline)
+			(anchor rect)
+		)
+		(primitives
+			(gr_rect
+				(start -0.975 -0.45)
+				(end -0.825 0.45)
+				(width 0.3)
+				(fill yes)
+			)
+		)
 		(uuid "b6f0ec95-803d-4e39-b2c0-595e175b03b2")
 	)
-	(pad "15" smd roundrect
-		(at 14 2)
-		(size 3 1.2)
-		(drill
-			(offset 0.5 0)
-		)
+	(pad "15" smd custom
+		(at 14.1 2)
+		(size 1.75 1.2)
 		(layers "B.Cu" "B.Mask" "B.Paste")
-		(roundrect_rratio 0.1666666667)
 		(thermal_bridge_angle 45)
+		(options
+			(clearance outline)
+			(anchor rect)
+		)
+		(primitives
+			(gr_rect
+				(start -0.975 -0.45)
+				(end -0.825 0.45)
+				(width 0.3)
+				(fill yes)
+			)
+		)
 		(uuid "fed17618-43bf-4b50-85dd-2eb7045a7f33")
 	)
-	(pad "16" smd roundrect
-		(at 14 0)
-		(size 3 1.2)
-		(drill
-			(offset 0.5 0)
-		)
+	(pad "16" smd custom
+		(at 14.1 0)
+		(size 1.75 1.2)
 		(layers "B.Cu" "B.Mask" "B.Paste")
-		(roundrect_rratio 0.1666666667)
 		(thermal_bridge_angle 45)
+		(options
+			(clearance outline)
+			(anchor rect)
+		)
+		(primitives
+			(gr_rect
+				(start -0.975 -0.45)
+				(end -0.825 0.45)
+				(width 0.3)
+				(fill yes)
+			)
+		)
 		(uuid "c5ae2390-0a73-4e28-a3ce-334d145e5bb6")
 	)
-	(pad "17" smd roundrect
-		(at 14 -2)
-		(size 3 1.2)
-		(drill
-			(offset 0.5 0)
-		)
+	(pad "17" smd custom
+		(at 14.1 -2)
+		(size 1.75 1.2)
 		(layers "B.Cu" "B.Mask" "B.Paste")
-		(roundrect_rratio 0.1666666667)
 		(thermal_bridge_angle 45)
+		(options
+			(clearance outline)
+			(anchor rect)
+		)
+		(primitives
+			(gr_rect
+				(start -0.975 -0.45)
+				(end -0.825 0.45)
+				(width 0.3)
+				(fill yes)
+			)
+		)
 		(uuid "3aad3d37-56df-4094-9dcf-ad96a93cee98")
 	)
-	(pad "18" smd roundrect
-		(at 14 -4)
-		(size 3 1.2)
-		(drill
-			(offset 0.5 0)
-		)
+	(pad "18" smd custom
+		(at 14.1 -4)
+		(size 1.75 1.2)
 		(layers "B.Cu" "B.Mask" "B.Paste")
-		(roundrect_rratio 0.1666666667)
 		(thermal_bridge_angle 45)
+		(options
+			(clearance outline)
+			(anchor rect)
+		)
+		(primitives
+			(gr_rect
+				(start -0.975 -0.45)
+				(end -0.825 0.45)
+				(width 0.3)
+				(fill yes)
+			)
+		)
 		(uuid "9ce57824-6de0-444a-9fa8-b9899f15a55f")
 	)
-	(pad "19" smd roundrect
-		(at 14 -6)
-		(size 3 1.2)
-		(drill
-			(offset 0.5 0)
-		)
+	(pad "19" smd custom
+		(at 14.1 -6)
+		(size 1.75 1.2)
 		(layers "B.Cu" "B.Mask" "B.Paste")
-		(roundrect_rratio 0.1666666667)
 		(thermal_bridge_angle 45)
+		(options
+			(clearance outline)
+			(anchor rect)
+		)
+		(primitives
+			(gr_rect
+				(start -0.975 -0.45)
+				(end -0.825 0.45)
+				(width 0.3)
+				(fill yes)
+			)
+		)
 		(uuid "c4f1f90d-640d-4b17-89fd-141cd927d095")
 	)
-	(pad "20" smd roundrect
-		(at 11 -7 90)
-		(size 3 1.2)
-		(drill
-			(offset 0.5 0)
-		)
+	(pad "20" smd custom
+		(at 11 -7.3 90)
+		(size 1.75 1.2)
 		(layers "B.Cu" "B.Mask" "B.Paste")
-		(roundrect_rratio 0.1666666667)
 		(thermal_bridge_angle 45)
+		(options
+			(clearance outline)
+			(anchor rect)
+		)
+		(primitives
+			(gr_rect
+				(start -0.975 -0.45)
+				(end -0.825 0.45)
+				(width 0.3)
+				(fill yes)
+			)
+		)
 		(uuid "0387ddb7-4f1b-40fc-8f14-be6a631d5088")
 	)
-	(pad "21" smd roundrect
-		(at 9 -7 90)
-		(size 3 1.2)
-		(drill
-			(offset 0.5 0)
-		)
+	(pad "21" smd custom
+		(at 9 -7.3 90)
+		(size 1.75 1.2)
 		(layers "B.Cu" "B.Mask" "B.Paste")
-		(roundrect_rratio 0.1666666667)
 		(thermal_bridge_angle 45)
+		(options
+			(clearance outline)
+			(anchor rect)
+		)
+		(primitives
+			(gr_rect
+				(start -0.975 -0.45)
+				(end -0.825 0.45)
+				(width 0.3)
+				(fill yes)
+			)
+		)
 		(uuid "f3ec8c44-51ff-4002-b506-a59ab50efe41")
 	)
-	(pad "22" smd roundrect
-		(at 7 -7 90)
-		(size 3 1.2)
-		(drill
-			(offset 0.5 0)
-		)
+	(pad "22" smd custom
+		(at 7 -7.3 90)
+		(size 1.75 1.2)
 		(layers "B.Cu" "B.Mask" "B.Paste")
-		(roundrect_rratio 0.1666666667)
 		(thermal_bridge_angle 45)
+		(options
+			(clearance outline)
+			(anchor rect)
+		)
+		(primitives
+			(gr_rect
+				(start -0.975 -0.45)
+				(end -0.825 0.45)
+				(width 0.3)
+				(fill yes)
+			)
+		)
 		(uuid "4f297167-f2fa-47b2-8497-13ae81abaeaf")
 	)
-	(pad "23" smd roundrect
-		(at 5 -7 90)
-		(size 3 1.2)
-		(drill
-			(offset 0.5 0)
-		)
+	(pad "23" smd custom
+		(at 5 -7.3 90)
+		(size 1.75 1.2)
 		(layers "B.Cu" "B.Mask" "B.Paste")
-		(roundrect_rratio 0.1666666667)
 		(thermal_bridge_angle 45)
+		(options
+			(clearance outline)
+			(anchor rect)
+		)
+		(primitives
+			(gr_rect
+				(start -0.975 -0.45)
+				(end -0.825 0.45)
+				(width 0.3)
+				(fill yes)
+			)
+		)
 		(uuid "b945cb61-d459-49a7-a661-c813c3c694c4")
 	)
-	(pad "24" smd roundrect
-		(at 3 -7 90)
-		(size 3 1.2)
-		(drill
-			(offset 0.5 0)
-		)
+	(pad "24" smd custom
+		(at 3 -7.3 90)
+		(size 1.75 1.2)
 		(layers "B.Cu" "B.Mask" "B.Paste")
-		(roundrect_rratio 0.1666666667)
 		(thermal_bridge_angle 45)
+		(options
+			(clearance outline)
+			(anchor rect)
+		)
+		(primitives
+			(gr_rect
+				(start -0.975 -0.45)
+				(end -0.825 0.45)
+				(width 0.3)
+				(fill yes)
+			)
+		)
 		(uuid "0714347f-5e44-4636-bee0-db69d0f400de")
 	)
-	(pad "25" smd roundrect
-		(at 1 -7 90)
-		(size 3 1.2)
-		(drill
-			(offset 0.5 0)
-		)
+	(pad "25" smd custom
+		(at 1 -7.3 90)
+		(size 1.75 1.2)
 		(layers "B.Cu" "B.Mask" "B.Paste")
-		(roundrect_rratio 0.1666666667)
 		(thermal_bridge_angle 45)
+		(options
+			(clearance outline)
+			(anchor rect)
+		)
+		(primitives
+			(gr_rect
+				(start -0.975 -0.45)
+				(end -0.825 0.45)
+				(width 0.3)
+				(fill yes)
+			)
+		)
 		(uuid "623bc0e6-9f5a-41fc-93eb-f1ac33269787")
 	)
-	(pad "26" smd roundrect
-		(at -1 -7 90)
-		(size 3 1.2)
-		(drill
-			(offset 0.5 0)
-		)
+	(pad "26" smd custom
+		(at -1 -7.3 90)
+		(size 1.75 1.2)
 		(layers "B.Cu" "B.Mask" "B.Paste")
-		(roundrect_rratio 0.1666666667)
 		(thermal_bridge_angle 45)
+		(options
+			(clearance outline)
+			(anchor rect)
+		)
+		(primitives
+			(gr_rect
+				(start -0.975 -0.45)
+				(end -0.825 0.45)
+				(width 0.3)
+				(fill yes)
+			)
+		)
 		(uuid "754b69a8-592f-4af8-899e-0fa2ca2e38cc")
 	)
-	(pad "27" smd roundrect
-		(at -3 -7 90)
-		(size 3 1.2)
-		(drill
-			(offset 0.5 0)
-		)
+	(pad "27" smd custom
+		(at -3 -7.3 90)
+		(size 1.75 1.2)
 		(layers "B.Cu" "B.Mask" "B.Paste")
-		(roundrect_rratio 0.1666666667)
 		(thermal_bridge_angle 45)
+		(options
+			(clearance outline)
+			(anchor rect)
+		)
+		(primitives
+			(gr_rect
+				(start -0.975 -0.45)
+				(end -0.825 0.45)
+				(width 0.3)
+				(fill yes)
+			)
+		)
 		(uuid "0a943d08-ecdf-4ab4-ba91-dfe2ca9e90c8")
 	)
-	(pad "28" smd roundrect
-		(at -5 -7 90)
-		(size 3 1.2)
-		(drill
-			(offset 0.5 0)
-		)
+	(pad "28" smd custom
+		(at -5 -7.3 90)
+		(size 1.75 1.2)
 		(layers "B.Cu" "B.Mask" "B.Paste")
-		(roundrect_rratio 0.1666666667)
 		(thermal_bridge_angle 45)
+		(options
+			(clearance outline)
+			(anchor rect)
+		)
+		(primitives
+			(gr_rect
+				(start -0.975 -0.45)
+				(end -0.825 0.45)
+				(width 0.3)
+				(fill yes)
+			)
+		)
 		(uuid "bd06e712-8696-4f7f-b4b9-631dd215da75")
 	)
-	(pad "29" smd roundrect
-		(at -7 -7 90)
-		(size 3 1.2)
-		(drill
-			(offset 0.5 0)
-		)
+	(pad "29" smd custom
+		(at -7 -7.3 90)
+		(size 1.75 1.2)
 		(layers "B.Cu" "B.Mask" "B.Paste")
-		(roundrect_rratio 0.1666666667)
 		(thermal_bridge_angle 45)
+		(options
+			(clearance outline)
+			(anchor rect)
+		)
+		(primitives
+			(gr_rect
+				(start -0.975 -0.45)
+				(end -0.825 0.45)
+				(width 0.3)
+				(fill yes)
+			)
+		)
 		(uuid "ea5009b0-d57c-4119-bd84-a7a200efa8f1")
 	)
-	(pad "30" smd roundrect
-		(at -9 -7 90)
-		(size 3 1.2)
-		(drill
-			(offset 0.5 0)
-		)
+	(pad "30" smd custom
+		(at -9 -7.3 90)
+		(size 1.75 1.2)
 		(layers "B.Cu" "B.Mask" "B.Paste")
-		(roundrect_rratio 0.1666666667)
 		(thermal_bridge_angle 45)
+		(options
+			(clearance outline)
+			(anchor rect)
+		)
+		(primitives
+			(gr_rect
+				(start -0.975 -0.45)
+				(end -0.825 0.45)
+				(width 0.3)
+				(fill yes)
+			)
+		)
 		(uuid "feb5f75d-e2cf-4b51-ac53-764391273ee4")
 	)
-	(pad "31" smd roundrect
-		(at -11 -7 90)
-		(size 3 1.2)
-		(drill
-			(offset 0.5 0)
-		)
+	(pad "31" smd custom
+		(at -11 -7.3 90)
+		(size 1.75 1.2)
 		(layers "B.Cu" "B.Mask" "B.Paste")
-		(roundrect_rratio 0.1666666667)
 		(thermal_bridge_angle 45)
+		(options
+			(clearance outline)
+			(anchor rect)
+		)
+		(primitives
+			(gr_rect
+				(start -0.975 -0.45)
+				(end -0.825 0.45)
+				(width 0.3)
+				(fill yes)
+			)
+		)
 		(uuid "e36e12dd-5ad7-4462-86f8-2473489057d9")
 	)
-	(pad "32" smd roundrect
-		(at -14 -6 180)
-		(size 3 1.2)
-		(drill
-			(offset 0.5 0)
-		)
+	(pad "32" smd custom
+		(at -14.1 -6 180)
+		(size 1.75 1.2)
 		(layers "B.Cu" "B.Mask" "B.Paste")
-		(roundrect_rratio 0.1666666667)
 		(thermal_bridge_angle 45)
+		(options
+			(clearance outline)
+			(anchor rect)
+		)
+		(primitives
+			(gr_rect
+				(start -0.975 -0.45)
+				(end -0.825 0.45)
+				(width 0.3)
+				(fill yes)
+			)
+		)
 		(uuid "c765d4fe-650b-4e91-9256-91f707571624")
 	)
-	(pad "33" smd roundrect
-		(at -14 -4 180)
-		(size 3 1.2)
-		(drill
-			(offset 0.5 0)
-		)
+	(pad "33" smd custom
+		(at -14.1 -4 180)
+		(size 1.75 1.2)
 		(layers "B.Cu" "B.Mask" "B.Paste")
-		(roundrect_rratio 0.1666666667)
 		(thermal_bridge_angle 45)
+		(options
+			(clearance outline)
+			(anchor rect)
+		)
+		(primitives
+			(gr_rect
+				(start -0.975 -0.45)
+				(end -0.825 0.45)
+				(width 0.3)
+				(fill yes)
+			)
+		)
 		(uuid "3c37a82c-15c0-4e42-8c15-42f90565f7df")
 	)
-	(pad "34" smd roundrect
-		(at -14 -2 180)
-		(size 3 1.2)
-		(drill
-			(offset 0.5 0)
-		)
+	(pad "34" smd custom
+		(at -14.1 -2 180)
+		(size 1.75 1.2)
 		(layers "B.Cu" "B.Mask" "B.Paste")
-		(roundrect_rratio 0.1666666667)
 		(thermal_bridge_angle 45)
+		(options
+			(clearance outline)
+			(anchor rect)
+		)
+		(primitives
+			(gr_rect
+				(start -0.975 -0.45)
+				(end -0.825 0.45)
+				(width 0.3)
+				(fill yes)
+			)
+		)
 		(uuid "e5c0d1f0-7487-45ec-95a3-f3c79b6baafb")
 	)
-	(pad "35" smd roundrect
-		(at -14 0 180)
-		(size 3 1.2)
-		(drill
-			(offset 0.5 0)
-		)
+	(pad "35" smd custom
+		(at -14.1 0 180)
+		(size 1.75 1.2)
 		(layers "B.Cu" "B.Mask" "B.Paste")
-		(roundrect_rratio 0.1666666667)
 		(thermal_bridge_angle 45)
+		(options
+			(clearance outline)
+			(anchor rect)
+		)
+		(primitives
+			(gr_rect
+				(start -0.975 -0.45)
+				(end -0.825 0.45)
+				(width 0.3)
+				(fill yes)
+			)
+		)
 		(uuid "028145ff-1844-48f5-899e-3651f89652b6")
 	)
-	(pad "36" smd roundrect
-		(at -14 2 180)
-		(size 3 1.2)
-		(drill
-			(offset 0.5 0)
-		)
+	(pad "36" smd custom
+		(at -14.1 2 180)
+		(size 1.75 1.2)
 		(layers "B.Cu" "B.Mask" "B.Paste")
-		(roundrect_rratio 0.1666666667)
 		(thermal_bridge_angle 45)
+		(options
+			(clearance outline)
+			(anchor rect)
+		)
+		(primitives
+			(gr_rect
+				(start -0.975 -0.45)
+				(end -0.825 0.45)
+				(width 0.3)
+				(fill yes)
+			)
+		)
 		(uuid "dce1618c-629b-464b-94f4-627dca5ae124")
 	)
-	(pad "37" smd roundrect
-		(at -14 4 180)
-		(size 3 1.2)
-		(drill
-			(offset 0.5 0)
-		)
+	(pad "37" smd custom
+		(at -14.1 4 180)
+		(size 1.75 1.2)
 		(layers "B.Cu" "B.Mask" "B.Paste")
-		(roundrect_rratio 0.1666666667)
 		(thermal_bridge_angle 45)
+		(options
+			(clearance outline)
+			(anchor rect)
+		)
+		(primitives
+			(gr_rect
+				(start -0.975 -0.45)
+				(end -0.825 0.45)
+				(width 0.3)
+				(fill yes)
+			)
+		)
 		(uuid "7309558c-a0f9-4fe1-9df8-50248cf799a8")
 	)
-	(pad "38" smd roundrect
-		(at -14 6 180)
-		(size 3 1.2)
-		(drill
-			(offset 0.5 0)
-		)
+	(pad "38" smd custom
+		(at -14.1 6 180)
+		(size 1.75 1.2)
 		(layers "B.Cu" "B.Mask" "B.Paste")
-		(roundrect_rratio 0.1666666667)
 		(thermal_bridge_angle 45)
+		(options
+			(clearance outline)
+			(anchor rect)
+		)
+		(primitives
+			(gr_rect
+				(start -0.975 -0.45)
+				(end -0.825 0.45)
+				(width 0.3)
+				(fill yes)
+			)
+		)
 		(uuid "082d5aa9-4f04-495d-9f74-77b3beacf5a7")
 	)
 	(embedded_fonts no)
