@@ -1413,7 +1413,7 @@
 						)
 					)
 				)
-				(number "32"
+				(number "31"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -1546,7 +1546,7 @@
 						)
 					)
 				)
-				(number "28"
+				(number "32"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -1709,7 +1709,7 @@
 						)
 					)
 				)
-				(number "29"
+				(number "28"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -1727,7 +1727,7 @@
 						)
 					)
 				)
-				(number "30"
+				(number "29"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -1745,7 +1745,7 @@
 						)
 					)
 				)
-				(number "31"
+				(number "30"
 					(effects
 						(font
 							(size 1.27 1.27)

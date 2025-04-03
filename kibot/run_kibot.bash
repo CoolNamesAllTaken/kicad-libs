@@ -80,11 +80,11 @@ if [ "$1" == "-i" ]; then
     # Run kibot in a docker container
     MSYS_NO_PATHCONV=1 docker run --rm -it \
         --env KICAD_LIBS_DIR="/kicad-libs" \
-        --env KICAD8_USER_DIR="/kicad-user" \
-        --env KICAD8_TEMPLATE_DIR="/kicad-share/kicad/template" \
-        --env KICAD8_SYMBOL_DIR="/kicad-share/kicad/symbols" \
-        --env KICAD8_FOOTPRINT_DIR="/kicad-share/kicad/footprints" \
-        --env KICAD8_3DMODEL_DIR="/kicad-share/kicad/3dmodels" \
+        --env KICAD9_USER_DIR="/kicad-user" \
+        --env KICAD9_TEMPLATE_DIR="/kicad-share/kicad/template" \
+        --env KICAD9_SYMBOL_DIR="/kicad-share/kicad/symbols" \
+        --env KICAD9_FOOTPRINT_DIR="/kicad-share/kicad/footprints" \
+        --env KICAD9_3DMODEL_DIR="/kicad-share/kicad/3dmodels" \
         --volume="$KICAD_LIBS_DIR":"/kicad-libs" \
         --volume="$KICAD_USER_DIR":"/kicad-user" \
         --volume="$KICAD_SHARE_DIR/kicad":"/kicad-share/kicad" \

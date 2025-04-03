@@ -96,9 +96,9 @@ outputs:
       dark_mode: true
       highlight_pin1: true
 
-  - name: "3d_step"
+  - name: "export_3d"
     comment: "3D model in STEP format."
-    type: step
+    type: export_3d
     dir: +fab
 
   - name: "positions"
