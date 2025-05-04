@@ -15,7 +15,7 @@ preflight:
   drc: true
   erc: true
   fill_zones: true
-  draw_fancy_stackup: true
+  draw_fancy_stackup: false
   update_pcb_characteristics: true
 
 outputs:
