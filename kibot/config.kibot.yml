@@ -1,19 +1,9 @@
 kibot:
   version: 1
 
-global:
-  environment:
-    symbols: ${KICAD8_SYMBOL_DIR}
-    footprints: ${KICAD8_FOOTPRINT_DIR}
-    models_3d: ${KICAD8_3DMODEL_DIR}
-    templates: ${KICAD8_TEMPLATE_DIR}
-    user_templates: ${KICAD8_USER_DIR}/template
-    # extra_os:
-    #   - KICAD_LIBS_DIR: ${KICAD_LIBS_DIR}
-
 preflight:
-  drc: true
   erc: true
+  drc: true
   fill_zones: true
   draw_fancy_stackup: false
   update_pcb_characteristics: true

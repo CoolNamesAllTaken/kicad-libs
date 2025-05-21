@@ -1,7 +1,7 @@
 (footprint "Murata_MM8930-2620"
-	(version 20240108)
+	(version 20241229)
 	(generator "pcbnew")
-	(generator_version "8.0")
+	(generator_version "9.0")
 	(layer "F.Cu")
 	(tags "MM8930-2620RJ4 ")
 	(property "Reference" "REF**"
@@ -24,18 +24,6 @@
 		(effects
 			(font
 				(size 1 1)
-				(thickness 0.15)
-			)
-		)
-	)
-	(property "Footprint" ""
-		(at 0 0 0)
-		(layer "F.Fab")
-		(hide yes)
-		(uuid "1f349425-efd6-4ba9-802b-8aac3bfcf216")
-		(effects
-			(font
-				(size 1.27 1.27)
 				(thickness 0.15)
 			)
 		)
@@ -285,6 +273,19 @@
 		(layer "F.Fab")
 		(uuid "a9812c0d-974b-4312-877a-ccd5ac9aecbc")
 	)
+	(fp_text user "R"
+		(at 1.25 1 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "a30ab9dd-f186-45a3-949d-bcc18b5ff74c")
+		(effects
+			(font
+				(size 0.5 0.5)
+				(thickness 0.125)
+			)
+			(justify left bottom)
+		)
+	)
 	(fp_text user "${REFERENCE}"
 		(at 0 0 0)
 		(unlocked yes)
@@ -376,13 +377,13 @@
 	(pad "1" smd rect
 		(at -0.8 0)
 		(size 0.3 0.5)
-		(layers "F.Cu" "F.Paste" "F.Mask")
+		(layers "F.Cu" "F.Mask" "F.Paste")
 		(uuid "5377c47a-af98-4fbc-a8ac-3e93e2a3ce2f")
 	)
 	(pad "2" smd rect
 		(at 0.8 0)
 		(size 0.3 0.5)
-		(layers "F.Cu" "F.Paste" "F.Mask")
+		(layers "F.Cu" "F.Mask" "F.Paste")
 		(uuid "da8fd65b-33dd-4f32-84e5-9f45a80cbc07")
 	)
 	(pad "3" smd custom
@@ -443,6 +444,10 @@
 			(copperpour allowed)
 			(footprints allowed)
 		)
+		(placement
+			(enabled no)
+			(sheetname "")
+		)
 		(fill
 			(thermal_gap 0.5)
 			(thermal_bridge_width 0.5)
@@ -454,6 +459,7 @@
 			)
 		)
 	)
+	(embedded_fonts no)
 	(model "${KICAD_LIBS_DIR}/lib_3d/Custom_TestJack/Murata_MM8930-2620.step"
 		(offset
 			(xyz 0 0 0)

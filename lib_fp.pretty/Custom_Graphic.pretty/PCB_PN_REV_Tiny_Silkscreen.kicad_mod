@@ -54,35 +54,32 @@
 		)
 	)
 	(attr allow_soldermask_bridges)
-	(fp_text user "${REV}"
-		(at 0 -0.5 0)
+	(fp_rect
+		(start -3 -0.5)
+		(end 3 0.5)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "2c013c27-f69d-43ce-9ce5-1461a102b9ac")
+	)
+	(fp_text user "${PCB_PN}-${PCB_REV}"
+		(at 0 0 0)
 		(unlocked yes)
-		(layer "F.SilkS" knockout)
+		(layer "F.SilkS")
 		(uuid "bd390507-6d17-4898-be2a-4dce96b0c7e8")
 		(effects
 			(font
 				(size 0.5 0.5)
 				(thickness 0.125)
 			)
-			(justify left)
-		)
-	)
-	(fp_text user "${MPN}"
-		(at 0 -1.5 0)
-		(unlocked yes)
-		(layer "F.SilkS")
-		(uuid "e0814111-bad9-4f54-a035-8324f3d30150")
-		(effects
-			(font
-				(size 0.5 0.5)
-				(thickness 0.125)
-			)
-			(justify left)
 		)
 	)
 	(group ""
-		(uuid "c30da8c4-f29a-4983-865e-6a4ee764c894")
-		(members "bd390507-6d17-4898-be2a-4dce96b0c7e8" "e0814111-bad9-4f54-a035-8324f3d30150")
+		(uuid "0d1b4a14-0f45-480a-b2c6-c0575eb690e3")
+		(members "2c013c27-f69d-43ce-9ce5-1461a102b9ac" "bd390507-6d17-4898-be2a-4dce96b0c7e8")
 	)
 	(embedded_fonts no)
 )

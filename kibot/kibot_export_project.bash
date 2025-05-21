@@ -61,11 +61,11 @@ else
 fi
 
 # Run custom KiBot configuration.
-kibot -c $kibot_dir/config.kibot.yml -e $projects_dir/$project/$project.kicad_sch -d $exports_dir
+kibot -c $kibot_dir/config.kibot.yml -e $projects_dir/$project/$project.kicad_sch -d $exports_dir -g KICAD_LIBS_DIR=$KICAD_LIBS_DIR
 
 # Run JLCPCB KiBot configuration.
 if [ "$jlcpcb" = true ]; then
     echo "Running JLCPCB KiBot configuration"
-    kibot -c $kibot_dir/jlcpcb.kibot.yml -e $projects_dir/$project/$project.kicad_sch -d $exports_dir
+    kibot -c $kibot_dir/jlcpcb.kibot.yml -e $projects_dir/$project/$project.kicad_sch -d $exports_dir -g KICAD_LIBS_DIR=$KICAD_LIBS_DIR
 fi
 # kibot -c $projects_dir/jlcpcb.kibot.yml -e $projects_dir/$project/$project.kicad_sch -d $exports_dir
