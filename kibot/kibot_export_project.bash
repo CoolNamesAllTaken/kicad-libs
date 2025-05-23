@@ -3,9 +3,9 @@
 echo "====================="
 echo kibot_export_project.bash $@
 
-# projects_dir=$(dirname $0)
 projects_dir=/projects
 kibot_dir=/kibot
+scripts_dir=/scripts
 jlcpcb=false
 project=""
 
@@ -60,12 +60,45 @@ else
     mkdir -p $exports_dir
 fi
 
+kibot_params=(
+    "-e $projects_dir/$project/$project.kicad_sch"
+    "-d $exports_dir"
+    "-g KICAD_LIBS_DIR=$KICAD_LIBS_DIR"
+    "-E PROJECT_DIR=$projects_dir/$project"
+)
+
 # Run custom KiBot configuration.
-kibot -c $kibot_dir/config.kibot.yml -e $projects_dir/$project/$project.kicad_sch -d $exports_dir -g KICAD_LIBS_DIR=$KICAD_LIBS_DIR
+# echo ${kibot_params[@]}
+kibot -c $kibot_dir/config.kibot.yml ${kibot_params[@]}
 
 # Run JLCPCB KiBot configuration.
 if [ "$jlcpcb" = true ]; then
     echo "Running JLCPCB KiBot configuration"
-    kibot -c $kibot_dir/jlcpcb.kibot.yml -e $projects_dir/$project/$project.kicad_sch -d $exports_dir -g KICAD_LIBS_DIR=$KICAD_LIBS_DIR
+    kibot -c $kibot_dir/jlcpcb.kibot.yml ${kibot_params[@]}
 fi
-# kibot -c $projects_dir/jlcpcb.kibot.yml -e $projects_dir/$project/$project.kicad_sch -d $exports_dir
+
+# If the project contains a panelize.json file, run kibot again with panelize.kibot.yml
+if [ -f $projects_dir/$project/panel.json ]; then
+
+    echo "Creating panelized design with KiBot"
+    rm -rf $projects_dir/$project/panelized/*
+    kibot -c $kibot_dir/panelize.kibot.yml ${kibot_params[@]}
+
+    kibot_panel_params=(
+        # Use the original schematic and the panelized PCB to invoke KiBot.
+        "-e $projects_dir/$project/panelized/$project-panel.kicad_pcb"
+        "-b $projects_dir/$project/panelized/$project-panel.kicad_pcb"
+        "-d $exports_dir/panel"
+        "-g KICAD_LIBS_DIR=$KICAD_LIBS_DIR"
+        "-E PROJECT_DIR=$projects_dir/$project/panelized"
+    )
+
+    echo "Exporting panelized design"
+    kibot -c $kibot_dir/panel_config.kibot.yml ${kibot_panel_params[@]}
+
+    if [ "$jlcpcb" = true ]; then
+        echo "Running JLCPCB KiBot configuration for panelized design"
+        kibot -c $kibot_dir/panel_jlcpcb.kibot.yml ${kibot_panel_params[@]}
+    fi
+
+fi

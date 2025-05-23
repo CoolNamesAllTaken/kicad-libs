@@ -1,0 +1,12 @@
+kibot:
+  version: 1
+
+outputs:
+  ## Panel Outputs ##
+  - name: "panelize"
+    comment: "Panelized PCB for manufacturing."
+    type: panelize
+    dir: "@PROJECT_DIR@/panelized"
+    options:
+      output: "%f-panel.%x"
+      configs: "@PROJECT_DIR@/panel.json"

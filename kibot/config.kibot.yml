@@ -148,5 +148,3 @@ outputs:
         - field: "MPN"
         - field: "LCSC PN"
         - field: "Note"
-  
-  
