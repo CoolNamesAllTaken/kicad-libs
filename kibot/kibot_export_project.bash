@@ -79,9 +79,11 @@ fi
 
 # If the project contains a panelize.json file, run kibot again with panelize.kibot.yml
 if [ -f $projects_dir/$project/panel.json ]; then
-
     echo "Creating panelized design with KiBot"
     rm -rf $projects_dir/$project/panelized/*
+    mkdir -p $projects_dir/$project/panelized
+
+    # Create panelized KiCAD source files in the panelized directory with KiBot.
     kibot -c $kibot_dir/panelize.kibot.yml ${kibot_params[@]}
 
     kibot_panel_params=(

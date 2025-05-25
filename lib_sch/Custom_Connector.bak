@@ -2,13 +2,13 @@
 	(version 20231120)
 	(generator "kicad_symbol_editor")
 	(generator_version "8.0")
-	(symbol "CoaxialSwitch_Testpoint"
+	(symbol "CoaxialSwitch_TestJack"
 		(pin_names
 			(offset 1.016) hide)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" "TP16"
+		(property "Reference" "TJ?"
 			(at 0 6.858 0)
 			(effects
 				(font
@@ -42,7 +42,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Subminiature Coaxial Switch test connector."
+		(property "Description" "Subminiature Coaxial Switch bidirectional inline connector."
 			(at 0 0 0)
 			(effects
 				(font
@@ -78,7 +78,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" ""
+		(property "Manufacturer" "Murata Electronics"
 			(at 0 0 0)
 			(effects
 				(font
@@ -105,7 +105,7 @@
 				(hide yes)
 			)
 		)
-		(symbol "CoaxialSwitch_Testpoint_0_1"
+		(symbol "CoaxialSwitch_TestJack_0_1"
 			(rectangle
 				(start -2.54 -2.54)
 				(end 2.54 -2.54)
@@ -151,7 +151,7 @@
 				)
 			)
 		)
-		(symbol "CoaxialSwitch_Testpoint_1_1"
+		(symbol "CoaxialSwitch_TestJack_1_1"
 			(circle
 				(center -2.032 1.27)
 				(radius 0.508)

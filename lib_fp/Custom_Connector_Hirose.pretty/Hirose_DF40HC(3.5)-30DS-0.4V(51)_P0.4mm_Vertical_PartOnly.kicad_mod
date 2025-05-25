@@ -1,0 +1,148 @@
+(footprint "Hirose_DF40HC(3.5)-30DS-0.4V(51)_P0.4mm_Vertical_PartOnly"
+	(version 20240108)
+	(generator "pcbnew")
+	(generator_version "8.0")
+	(layer "F.Cu")
+	(property "Reference" "REF**"
+		(at 0 -3.2 0)
+		(layer "F.SilkS")
+		(hide yes)
+		(uuid "58b9d881-4d3f-4509-9492-f770339660be")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "Hirose_DF40HC(3.5)-30DS-0.4V(51)_P0.4mm_Vertical_PartOnly"
+		(at 0 3.4 0)
+		(layer "F.Fab")
+		(uuid "13b75e67-8981-480a-9d5e-d5c99d7702bb")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Footprint" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "503b9c12-b692-40e5-89f0-057680416097")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "c224e89d-3914-4454-a343-4085c7952c58")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "ae7bb63e-9299-4f95-b608-f71876cf5a57")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(attr smd)
+	(fp_line
+		(start -3.2 -2)
+		(end -3.2 2)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "dee4afce-b2a6-4f71-98e2-ddfbc21ffa24")
+	)
+	(fp_line
+		(start -3.2 -2)
+		(end 3.2 -2)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "838797b6-b757-47ac-8b63-f8a5b7b780af")
+	)
+	(fp_line
+		(start -3.2 2)
+		(end -2.8 1.4)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "d6cb6a91-67a1-4956-b985-7a58bad6ed65")
+	)
+	(fp_line
+		(start -2.8 1.4)
+		(end -2.4 2)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "532a3282-4c0e-4baf-bc36-474d516a3df2")
+	)
+	(fp_line
+		(start 3.2 2)
+		(end -3.2 2)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "007e0d63-e362-4921-9100-afb74a8a3ed4")
+	)
+	(fp_line
+		(start 3.2 2)
+		(end 3.2 -2)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "0d01b5dc-2fb0-415d-aa2e-2ab79f7c2f27")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(uuid "6574b2db-e352-4616-9184-a7574cbb6b2f")
+		(effects
+			(font
+				(size 0.5 0.5)
+				(thickness 0.1)
+			)
+		)
+	)
+	(model "${KICAD_LIBS_DIR}/lib_3d/Custom_Connector_Hirose/Hirose_DF40HC(3.5)-30DS-0.4V(51)_P0.4mm_Vertical_PartOnly.stp"
+		(offset
+			(xyz 0.885 0 2)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz -90 0 90)
+		)
+	)
+)
