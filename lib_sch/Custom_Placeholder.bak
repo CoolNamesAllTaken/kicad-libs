@@ -107,7 +107,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Custom_Graphic:PCB_PN_REV"
+		(property "Footprint" "Custom_Graphic:PCB_PN_REV_Tiny_Silkscreen"
 			(at -0.635 -3.81 0)
 			(effects
 				(font
@@ -158,7 +158,7 @@
 		)
 		(embedded_fonts no)
 	)
-	(symbol "Part"
+	(symbol "Part_Kitted"
 		(pin_numbers
 			(hide yes)
 		)
@@ -177,7 +177,87 @@
 				)
 			)
 		)
-		(property "Value" "Part"
+		(property "Value" "Part_Kitted"
+			(at 0 4.445 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Footprint" ""
+			(at -0.635 -3.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at -0.635 -3.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Placeholder for component to be included with PCBA but not mounted"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(symbol "Part_Kitted_0_1"
+			(rectangle
+				(start -7.62 1.27)
+				(end 7.62 -1.27)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+		)
+		(symbol "Part_Kitted_1_1"
+			(text "MOUNTED PART"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+	(symbol "Part_Mounted"
+		(pin_numbers
+			(hide yes)
+		)
+		(pin_names
+			(offset 0)
+			(hide yes)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(property "Reference" "PART"
+			(at 0 2.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Part_Mounted"
 			(at 0 4.445 0)
 			(effects
 				(font
@@ -213,10 +293,10 @@
 				(hide yes)
 			)
 		)
-		(symbol "Part_0_0"
+		(symbol "Part_Mounted_0_1"
 			(rectangle
-				(start -8.89 1.27)
-				(end 8.89 -7.62)
+				(start -7.62 1.27)
+				(end 7.62 -1.27)
 				(stroke
 					(width 0)
 					(type default)
@@ -225,44 +305,10 @@
 					(type none)
 				)
 			)
-			(polyline
-				(pts
-					(xy -8.89 -1.27) (xy 8.89 -1.27)
-				)
-				(stroke
-					(width 0)
-					(type default)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(text "PART ONLY"
+		)
+		(symbol "Part_Mounted_1_1"
+			(text "MOUNTED PART"
 				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(text "NO COPPER"
-				(at 0 -2.54 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(text "For Pick and"
-				(at 0 -4.445 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(text "Place ONLY"
-				(at 0 -6.35 0)
 				(effects
 					(font
 						(size 1.27 1.27)
