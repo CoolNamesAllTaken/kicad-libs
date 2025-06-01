@@ -227,7 +227,7 @@
 			)
 		)
 		(symbol "Part_Kitted_1_1"
-			(text "MOUNTED PART"
+			(text "KITTED PART"
 				(at 0 0 0)
 				(effects
 					(font

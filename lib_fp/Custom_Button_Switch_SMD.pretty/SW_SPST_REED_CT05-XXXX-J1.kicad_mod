@@ -1,0 +1,232 @@
+(footprint "SW_SPST_REED_CT05-XXXX-J1"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(descr "Coto Technologies SPST Reed Switch CT05-XXXX-J1")
+	(tags "Coto Reed SPST Switch")
+	(property "Reference" "REF**"
+		(at 0 2.54 0)
+		(layer "F.SilkS")
+		(uuid "476972a8-5a93-44be-a393-dfb2faba2cc4")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "SW_SPST_REED_CT05-XXXX-J1"
+		(at 0 -2.54 0)
+		(layer "F.Fab")
+		(uuid "eccf79a0-91d7-43c2-944b-13bf4012f916")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "71d4b6b6-8a2a-4ed3-bfb2-11520b2546fe")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "c22bd3ce-4794-4527-944c-33644e16cb95")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(fp_line
+		(start -4.5 -1.25)
+		(end -4.5 -0.75)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "2bb488b6-89c8-449a-be52-6f2082bc4353")
+	)
+	(fp_line
+		(start -4.5 0.75)
+		(end -4.5 1.25)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "9eb71096-1e32-4ac8-ba6c-271876a78447")
+	)
+	(fp_line
+		(start -4.5 1.25)
+		(end 4.5 1.25)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "73e2e48c-006d-41d8-ad6a-2e7fffa4f47f")
+	)
+	(fp_line
+		(start 4.5 -1.25)
+		(end -4.5 -1.25)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "b81127ed-6058-415c-8b9e-d1c47bf21f56")
+	)
+	(fp_line
+		(start 4.5 -0.75)
+		(end 4.5 -1.25)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "d1886a44-f42c-466c-9c33-973e19a0adf0")
+	)
+	(fp_line
+		(start 4.5 1.25)
+		(end 4.5 0.75)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "aa872fb4-bb94-4cda-901e-442a310194e9")
+	)
+	(fp_line
+		(start -4.75 -1.5)
+		(end -4.75 1.5)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "39498388-a4c3-4422-94ad-18d02d536092")
+	)
+	(fp_line
+		(start -4.75 1.5)
+		(end 4.75 1.5)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "5b6ecc35-2789-45f0-82cd-c63c8f0b2bbb")
+	)
+	(fp_line
+		(start 4.75 -1.5)
+		(end -4.75 -1.5)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "b57a3e51-2116-45d7-a919-c1141ce568f4")
+	)
+	(fp_line
+		(start 4.75 1.5)
+		(end 4.75 -1.5)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "cfb40dd1-2d92-47ee-9178-c01264c3daf5")
+	)
+	(fp_line
+		(start -3.2 -1.15)
+		(end 3.25 -1.15)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "c71c748f-8088-4fef-832f-be70a7dfab18")
+	)
+	(fp_line
+		(start -3.2 1.15)
+		(end -3.2 -1.15)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "4ca924aa-cb13-4b39-bf60-c6d5dd41adeb")
+	)
+	(fp_line
+		(start 3.25 -1.15)
+		(end 3.25 1.15)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "b6b4be37-7c38-4128-b729-bdfa71b1a08b")
+	)
+	(fp_line
+		(start 3.25 1.15)
+		(end -3.2 1.15)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "6af9aa1c-388b-454f-b813-a2e0eca8cff7")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 2.55 0)
+		(layer "F.Fab")
+		(uuid "f14be5fd-4e94-4254-88c9-e2e6d37d93bf")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "1" smd rect
+		(at -3.08 0)
+		(size 2.5 2)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "9c6e2587-2900-4c60-b13a-d762340dc9f9")
+	)
+	(pad "2" smd rect
+		(at 3.08 0)
+		(size 2.5 2)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "a9341074-1391-4506-a088-0f0e5a6d7e1b")
+	)
+	(embedded_fonts no)
+	(model "/Users/jmcnelly/Downloads/CT05-XXXX-J1-A.stp"
+		(offset
+			(xyz 0 0 1.4)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz -0 -0 -90)
+		)
+	)
+)

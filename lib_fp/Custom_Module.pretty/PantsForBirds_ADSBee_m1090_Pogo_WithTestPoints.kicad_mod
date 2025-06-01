@@ -202,6 +202,16 @@
 		(uuid "e724bc0a-ff0d-41b5-9bf7-84a8dcfce796")
 	)
 	(fp_line
+		(start 16.5 6)
+		(end 14 4)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "Cmts.User")
+		(uuid "8f0422e1-54a2-4628-8473-cc4148e2e067")
+	)
+	(fp_line
 		(start 18 -3)
 		(end 35.5 -3)
 		(stroke
@@ -210,6 +220,16 @@
 		)
 		(layer "Cmts.User")
 		(uuid "3aac1182-ded0-493e-b4ab-4a365a9c5237")
+	)
+	(fp_line
+		(start 18 6)
+		(end 16.5 6)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "Cmts.User")
+		(uuid "2d751b18-7f33-4e12-bab3-e79f8955bdb4")
 	)
 	(fp_rect
 		(start -15 -8.2)
@@ -837,7 +857,7 @@
 		)
 	)
 	(fp_text user "GND"
-		(at -13 -6.75 0)
+		(at -13 -7 0)
 		(unlocked yes)
 		(layer "F.SilkS")
 		(uuid "db01a702-9859-4a5c-864c-967821214523")
@@ -997,6 +1017,32 @@
 			(width 0.1)
 			(type solid)
 		)
+	)
+	(fp_text_box "TRIM LOCATING PIN TO REMOVE STUB"
+		(start 18 6)
+		(end 34.5 10.5)
+		(margins 1.0025 1.0025 1.0025 1.0025)
+		(layer "Cmts.User")
+		(uuid "dfd26c03-bda6-4beb-ae23-f425d9b725b3")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+			(justify left top)
+		)
+		(border yes)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+	)
+	(pad "" np_thru_hole circle
+		(at 14 4)
+		(size 0.71 0.71)
+		(drill 0.71)
+		(layers "F&B.Cu" "*.Mask")
+		(uuid "dc7d736a-22e6-4bf8-b349-01b4a3672d8b")
 	)
 	(pad "1" thru_hole circle
 		(at -11 7 270)
