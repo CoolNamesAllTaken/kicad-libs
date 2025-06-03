@@ -168,9 +168,9 @@
 		)
 		(exclude_from_sim no)
 		(in_bom yes)
-		(on_board yes)
+		(on_board no)
 		(property "Reference" "PART"
-			(at 0 2.54 0)
+			(at 0 4.572 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -178,12 +178,11 @@
 			)
 		)
 		(property "Value" "Part_Kitted"
-			(at 0 4.445 0)
+			(at 0 2.54 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Footprint" ""
