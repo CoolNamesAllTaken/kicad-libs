@@ -1,7 +1,7 @@
 (footprint "Jumper_C_0402_3Pole_Bridged12_3Down"
-	(version 20240108)
+	(version 20241229)
 	(generator "pcbnew")
-	(generator_version "8.0")
+	(generator_version "9.0")
 	(layer "F.Cu")
 	(property "Reference" "REF**"
 		(at 0 -1.1 0)
@@ -20,19 +20,6 @@
 		(unlocked yes)
 		(layer "F.Fab")
 		(uuid "3f705821-e4c4-4701-8151-7e7202c0dd9c")
-		(effects
-			(font
-				(size 1 1)
-				(thickness 0.15)
-			)
-		)
-	)
-	(property "Footprint" ""
-		(at 0 0 0)
-		(unlocked yes)
-		(layer "F.Fab")
-		(hide yes)
-		(uuid "6f09481a-bfde-4e66-97d9-e39cef788fc7")
 		(effects
 			(font
 				(size 1 1)
@@ -271,26 +258,27 @@
 		)
 	)
 	(pad "1" smd roundrect
-		(at -0.48 0)
-		(size 0.62 0.62)
-		(layers "F.Cu" "F.Paste" "F.Mask")
-		(roundrect_rratio 0.25)
-		(uuid "d66bba06-3482-43bd-8980-5dfd730d2df6")
-	)
-	(pad "2" smd roundrect
 		(at 0.48 0)
 		(size 0.56 0.62)
-		(layers "F.Cu" "F.Paste" "F.Mask")
+		(layers "F.Cu" "F.Mask" "F.Paste")
 		(roundrect_rratio 0.25)
 		(uuid "93e41129-e85d-4411-9511-9ddce000c47c")
+	)
+	(pad "2" smd roundrect
+		(at -0.48 0)
+		(size 0.62 0.62)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.25)
+		(uuid "d66bba06-3482-43bd-8980-5dfd730d2df6")
 	)
 	(pad "3" smd roundrect
 		(at -0.479999 0.96 270)
 		(size 0.56 0.62)
-		(layers "F.Cu" "F.Paste" "F.Mask")
+		(layers "F.Cu" "F.Mask" "F.Paste")
 		(roundrect_rratio 0.25)
 		(uuid "dcb53456-17fc-41aa-a58a-113c678b4a0b")
 	)
+	(embedded_fonts no)
 	(model "${KICAD8_3DMODEL_DIR}/Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
 		(offset
 			(xyz 0 0 0)

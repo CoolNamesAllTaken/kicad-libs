@@ -14,7 +14,7 @@
 		(in_bom no)
 		(on_board yes)
 		(property "Reference" "GRAPHIC"
-			(at 0 2.54 0)
+			(at 0 4.826 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -22,12 +22,11 @@
 			)
 		)
 		(property "Value" "Graphic"
-			(at 0 -2.54 0)
+			(at 0 2.794 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Footprint" ""
