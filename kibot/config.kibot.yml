@@ -5,17 +5,16 @@ preflight:
   erc: true
   drc: true
   fill_zones: true
-  draw_fancy_stackup: false
   update_pcb_characteristics: true
 
 outputs:
 
-  ## Plots Outputs ##
+  ## Fabrication Outputs ##
 
   - name: "gerber"
     comment: "Gerber files for PCB manufacturing."
     type: gerber
-    dir: +plots/gerber
+    dir: +manufacturing/fab/gerber
     options:
       # generic layer options
       exclude_edge_layer: false
@@ -35,104 +34,84 @@ outputs:
       create_gerber_job_file: true
       use_gerber_x2_attributes: true
       use_gerber_net_attributes: false
+      output: "${PCBA_PN}-${PCBA_REV}_%f-%i%I%v.%x"
     layers:
-      - "copper"
-      - "F.Mask"
-      - "B.Mask"
-      - "F.SilkS"
-      - "B.SilkS"
-      - "F.Fab"
-      - "B.Fab"
-      - "Edge.Cuts"
-      - "User.Drawings"
-      - "User.Comments"
+      - copper
+      - F.Mask
+      - B.Mask
+      - F.SilkS
+      - B.SilkS
+      - F.Fab
+      - B.Fab
+      - F.Paste
+      - B.Paste
+      - Edge.Cuts
+      - User.Drawings
+      - User.Comments
   
   - name: "drill_with_map_pdf"
     comment: "Drill files for PCB manufacturing."
     type: excellon
-    dir: +plots/drill
+    dir: +manufacturing/fab/drill
     options:
       # excellon options
       pth_and_npth_single_file: True
       map: "pdf"
+      output: "${PCBA_PN}-${PCBA_REV}_%f-%i%I%v.%x"
 
   - name: "drill_map_dxf"
     comment: "Drill files for PCB manufacturing."
     type: excellon
-    dir: +plots/drill
+    dir: +manufacturing/fab/drill
     options:
       # excellon options
       pth_and_npth_single_file: True
       map: "dxf"
-
-  ## Fab Outputs ##
-
-  - name: "schematic_pdf_annotated"
-    comment: "Annotated PDF of the schematic."
-    type: pdf_sch_print
-    dir: +fab
-    options:
-      output: "%f-%i%I%v-annotated.%x"
-
-  - name: "interactive_html_bom"
-    comment: "Interactive HTML BOM."
-    type: ibom
-    dir: +fab
-    options:
-      include_tracks: true
-      include_nets: true
-      output: "%f-%i%I%v.%x" # %i=ibom
-      blacklist_empty_val: true
-      dark_mode: true
-      highlight_pin1: true
-
-  - name: "export_3d"
-    comment: "3D model in STEP format."
-    type: export_3d
-    dir: +fab
-
-  - name: "positions"
-    comment: "Pick and place file."
-    type: position
-    dir: +fab
-    options:
-      format: ASCII
-      only_smd: false
-
-  - name: "positions-openpnp"
-    comment: "Pick and place file with mirrored bottom components for OpenPNP."
-    type: position
-    dir: +openpnp
-    options:
-      format: ASCII
-      only_smd: false
-      include_virtual: true
-      bottom_negative_x: true
+      output: "${PCBA_PN}-${PCBA_REV}_%f-%i%I%v.%x"
   
   - name: "netlist_d356"
     comment: "Netlist in IPC-D-356 format."
     type: netlist
-    dir: +fab
+    dir: +manufacturing/fab
     options:
       format: "ipc"
+      output: "${PCBA_PN}-${PCBA_REV}_%f-%i%I%v.%x"
 
-  # - name: "diff"
-  #   comment: "Diff file."
-  #   type: diff
-  #   dir: +fab
+  ## Assembly Outputs ##
+
+  - name: "interactive_html_bom"
+    comment: "Interactive HTML BOM."
+    type: ibom
+    dir: +manufacturing/assembly
+    options:
+      include_tracks: true
+      include_nets: true
+      output: "${PCBA_PN}-${PCBA_REV}_%f-%i%I%v.%x" # %i=ibom
+      blacklist_empty_val: true
+      dark_mode: true
+      highlight_pin1: true
+
+  - name: "positions"
+    comment: "Pick and place file."
+    type: position
+    dir: +manufacturing/assembly/pnp
+    options:
+      format: ASCII
+      only_smd: false
+      output: "${PCBA_PN}-${PCBA_REV}_%f-%i%I%v.%x"
 
   ## BOM Outputs ##
 
   - name: "bom_csv"
     comment: "Bill of Materials in CSV format."
     type: bom
-    dir: +bom
+    dir: +manufacturing/assembly
     options:
+      output: "${PCBA_PN}-${PCBA_REV}_%f-%i%I%v.%x"
       csv:
         hide_pcb_info: true
         quote_all: true
       group_fields: [ "Manufacturer", "MPN" ]
-
       columns:
         - field: "References"
           name: "Reference"
@@ -148,3 +127,54 @@ outputs:
         - field: "MPN"
         - field: "LCSC PN"
         - field: "Note"
+
+  ## Engineering Outputs ##
+
+  - name: "schematic_pdf_annotated"
+    comment: "Annotated PDF of the schematic."
+    type: pdf_sch_print
+    dir: +engineering
+    options:
+      output: "${PCBA_PN}-${PCBA_REV}_%f-%i%I%v-annotated.%x"
+
+  - name: "export_3d"
+    comment: "3D model in STEP format."
+    type: export_3d
+    dir: +engineering
+    options:
+      include_silkscreen: true
+      include_pads: true
+      include_soldermask: true
+      substitute_models: true
+      output: "${PCBA_PN}-${PCBA_REV}_%f-%i%I%v.%x"
+
+  ## Specialized Outputs ##
+
+  - name: "positions-openpnp"
+    comment: "Pick and place file with mirrored bottom components for OpenPNP."
+    type: position
+    dir: +special/openpnp
+    options:
+      format: ASCII
+      only_smd: false
+      include_virtual: true
+      bottom_negative_x: true
+      output: "${PCBA_PN}-${PCBA_REV}_%f-%i%I%v.%x"
+
+  ## Compress Outputs ##
+  - name: "zip_manufacturing"
+    comment: "ZIP manufacturing outputs."
+    type: compress
+    dir: manufacturing
+    options:
+      files:
+        - source: 'manufacturing/**'
+      output: ${PCBA_PN}-${PCBA_REV}_%f-manufacturing.%x
+  
+  - name: "zip_release"
+    comment: "ZIP all files for release."
+    type: compress
+    options:
+      files:
+        - source: '**'
+      output: ${PCBA_PN}-${PCBA_REV}_%f.%x

@@ -25,7 +25,7 @@ outputs:
   - name: JLCPCB_gerbers
     comment: Gerbers compatible with JLCPCB
     type: gerber
-    dir: JLCPCB
+    dir: special/jlcpcb
     options: &gerber_options
       exclude_edge_layer: true
       exclude_pads_from_silkscreen: true
@@ -46,18 +46,13 @@ outputs:
     layers:
       # Note: a more generic approach is to use 'copper' but then the filenames
       # are slightly different.
-      - F.Cu
-      - B.Cu
-      - In1.Cu
-      - In2.Cu
-      - In3.Cu
-      - In4.Cu
-      - In5.Cu
-      - In6.Cu
+      - copper
       - F.SilkS
       - B.SilkS
       - F.Mask
       - B.Mask
+      - F.Paste
+      - B.Paste
       - Edge.Cuts
       - User.Drawings
       - User.Comments
@@ -67,7 +62,7 @@ outputs:
   - name: JLCPCB_drill
     comment: Drill files compatible with JLCPCB
     type: excellon
-    dir: JLCPCB
+    dir: special/jlcpcb
     options:
       pth_and_npth_single_file: false
       pth_id: '-PTH'
@@ -80,7 +75,7 @@ outputs:
   # - name: 'JLCPCB_position'
   #   comment: "Pick and place file, JLCPCB style"
   #   type: position
-  #   dir: JLCPCB
+  #   dir: special/jlcpcb
   #   options:
   #     variant: rotated
   #     output: '%f_cpl_jlc.%x'
@@ -105,7 +100,7 @@ outputs:
   # - name: 'JLCPCB_bom'
   #   comment: "BoM for JLCPCB"
   #   type: bom
-  #   dir: JLCPCB
+  #   dir: special/jlcpcb
   #   options:
   #     output: '%f_%i_jlc.%x'
   #     # exclude_filter: 'only_jlc_parts'
@@ -126,13 +121,14 @@ outputs:
   - name: JLCPCB
     comment: ZIP file for JLCPCB
     type: compress
-    dir: JLCPCB
+    dir: special/jlcpcb
     options:
       files:
         - from_output: JLCPCB_gerbers
           dest: /
         - from_output: JLCPCB_drill
           dest: /
+      output: ${PCBA_PN}-${PCBA_REV}_%f_jlcpcb_panel.%x
         # - from_output: JLCPCB_position
         #   dest: /
         # - from_output: JLCPCB_bom
