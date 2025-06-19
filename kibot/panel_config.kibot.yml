@@ -120,7 +120,7 @@ outputs:
     options:
       files:
         - source: 'manufacturing/**'
-      output: ${PCBA_PN}-${PCBA_REV}_%f_panel-manufacturing.%x
+      output: ${PCBA_PN}-${PCBA_REV}_%f-manufacturing.%x
   
   - name: "zip_release"
     comment: "ZIP all files for release."
@@ -128,4 +128,4 @@ outputs:
     options:
       files:
         - source: '**'
-      output: ${PCBA_PN}-${PCBA_REV}_%f_panel.%x
+      output: ${PCBA_PN}-${PCBA_REV}_%f.%x
