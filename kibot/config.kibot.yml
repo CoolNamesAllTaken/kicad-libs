@@ -77,6 +77,38 @@ outputs:
       format: "ipc"
       output: "${PCBA_PN}-${PCBA_REV}_%f-%i%I%v.%x"
 
+  - name: "drawing"
+    comment: "Technical drawing in PDF format."
+    type: pcb_print
+    dir: +manufacturing/fab
+    options:
+      output: "${PCBA_PN}-${PCBA_REV}_%f-fabrication.%x"
+      pages:
+        - title: "PCB Primary Side"
+          layers:
+          - F.Cu
+          - F.Mask
+          - F.SilkS
+          - F.Paste
+          - Edge.Cuts
+          - User.Drawings
+          - User.Comments
+        - title: "PCB Secondary Side"
+          layers:
+          - B.Cu
+          - B.Mask
+          - B.SilkS
+          - B.Paste
+          - Edge.Cuts
+        - title: "Primary Side Paste"
+          layers:
+          - F.Paste
+          - Edge.Cuts
+        - title: "Secondary Side Paste"
+          layers:
+          - B.Paste
+          - Edge.Cuts
+          
   ## Assembly Outputs ##
 
   - name: "interactive_html_bom"
