@@ -107,6 +107,12 @@ outputs:
           layers:
           - B.Paste
           - Edge.Cuts
+        - title: "Copper Layer"
+          repeat_for_layer: F.Cu
+          repeat_layers: copper
+          layers:
+          - F.Cu
+          - Edge.Cuts
           
   ## Assembly Outputs ##
 

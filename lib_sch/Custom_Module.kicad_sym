@@ -968,8 +968,8 @@
 				)
 			)
 		)
-		(property "Value" ""
-			(at -13.97 22.606 0)
+		(property "Value" "ADSBee m1090"
+			(at 18.796 21.59 0)
 			(effects
 				(font
 					(size 1.27 1.27)
