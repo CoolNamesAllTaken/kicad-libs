@@ -92,7 +92,6 @@ outputs:
           - F.Paste
           - Edge.Cuts
           - User.Drawings
-          - User.Comments
         - title: "PCB Secondary Side"
           layers:
           - B.Cu
