@@ -423,12 +423,10 @@ def export_bom(sch_file: Path, dir_assembly: Path, prefix: str) -> None:
         "kicad-cli", "sch", "export", "bom",
         "--output", dir_assembly / f"{prefix}-bom.csv",
         "--fields",
-        "Reference,Value,Footprint,Datasheet,"
-        "Quantity Per PCB,Footprint Populate,Standard Cost,"
+        "Reference,Value,Footprint,QUANTITY,DNP,Standard Cost,"
         "Manufacturer,MPN,LCSC PN,Note",
         "--labels",
-        "Reference,Value,Footprint,Datasheet,"
-        "Qty,Populate,Standard Cost,"
+        "Reference,Value,Footprint,Quantity,Populate,Standard Cost,"
         "Manufacturer,MPN,LCSC PN,Note",
         "--group-by", "Manufacturer,MPN",
         sch_file,
