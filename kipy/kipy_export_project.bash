@@ -143,10 +143,12 @@ if [ -f "$panel_json" ]; then
     echo ""
     echo "Exporting panelized design"
 
+    panel_exports_dir="$project_abs/exports/panel"
+
     # Export the panel using the original schematic (the panel has no separate
     # schematic; ERC is skipped by export.py when the sch path is the same as
     # the main project's).
-    python3 "$EXPORT_PY" "$panel_pcb_host" "$sch_file" "${export_py_args[@]}"
+    python3 "$EXPORT_PY" "$panel_pcb_host" "$sch_file" --output-dir "$panel_exports_dir" "${export_py_args[@]}"
 fi
 
 echo ""

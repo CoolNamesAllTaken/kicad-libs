@@ -52,6 +52,8 @@ def parse_args() -> argparse.Namespace:
     )
     p.add_argument("pcb_file", type=Path, help="Board file (.kicad_pcb)")
     p.add_argument("sch_file", type=Path, help="Schematic file (.kicad_sch)")
+    p.add_argument("--output-dir", type=Path, default=None,
+                   help="Override output directory (default: <pcb_dir>/exports)")
     return p.parse_args()
 
 
@@ -508,8 +510,8 @@ def main() -> None:
     copper_layers = detect_copper_layers(pcb_file)
     print(f"Detected copper layers: {copper_layers}")
 
-    # Output root — exports/ subdirectory inside the project directory
-    out_base = pcb_file.parent / "exports"
+    # Output root — exports/ subdirectory inside the project directory (overridable)
+    out_base = args.output_dir.resolve() if args.output_dir else pcb_file.parent / "exports"
     if out_base.exists():
         shutil.rmtree(out_base)
     out_base.mkdir()
