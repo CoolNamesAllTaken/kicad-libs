@@ -22,11 +22,13 @@ while [[ $# -gt 0 ]]; do
             echo "  -j|--jlcpcb     (not yet implemented in kipy — flag accepted but ignored)
   -p|--panel-only Skip the main export and run only panelization (requires panel.json)."
             echo ""
-            echo "Environment variables forwarded to export.py:"
-            echo "  PCBA_PN     Part-number prefix    (default: PROJ)"
-            echo "  PCBA_REV    Revision string        (default: A)"
-            echo "  IBOM_SCRIPT Path to generate_interactive_bom.py"
-            echo "  COPPER_LAYERS  Comma-separated layer list (default: F.Cu,B.Cu)"
+            echo "Environment variables (override .kicad_pro text variables):"
+            echo "  PCBA_PN       Assembly part number  (default: from project, then PROJ)"
+            echo "  PCBA_REV      Assembly revision     (default: from project, then A)"
+            echo "  PCB_PN        Fab part number       (default: same as PCBA_PN)"
+            echo "  PCB_REV       Fab revision          (default: same as PCBA_REV)"
+            echo "  IBOM_SCRIPT   Path to generate_interactive_bom.py"
+            echo "  COPPER_LAYERS Comma-separated layer list (auto-detected if unset)"
             echo ""
             echo "Panelization:"
             echo "  If <project_dir>/panel.json exists, the panel is built with the"
@@ -148,7 +150,7 @@ if [ -f "$panel_json" ]; then
     # Export the panel using the original schematic (the panel has no separate
     # schematic; ERC is skipped by export.py when the sch path is the same as
     # the main project's).
-    python3 "$EXPORT_PY" "$panel_pcb_host" "$sch_file" --output-dir "$panel_exports_dir" "${export_py_args[@]}"
+    python3 "$EXPORT_PY" "$panel_pcb_host" "$sch_file" --output-dir "$panel_exports_dir" --panel --project-dir "$project_abs" "${export_py_args[@]}"
 fi
 
 echo ""

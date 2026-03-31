@@ -6,9 +6,15 @@
 # Usage:
 #   python3 export.py <board.kicad_pcb> <schematic.kicad_sch>
 #
-# Environment variables (override defaults):
-#   PCBA_PN   — Part number prefix (default: PROJ)
-#   PCBA_REV  — Revision string   (default: A)
+# Environment variables (override project text variables):
+#   PCBA_PN   — Assembly part number  (default: from .kicad_pro, then PROJ)
+#   PCBA_REV  — Assembly revision     (default: from .kicad_pro, then A)
+#   PCB_PN    — Fab part number       (default: same as PCBA_PN)
+#   PCB_REV   — Fab revision          (default: same as PCBA_REV)
+#
+# File naming:
+#   Assembly outputs  → PCBA_PN-PCBA_REV-<filename>
+#   Fab outputs       → PCB_PN-PCB_REV-<filename>
 #
 # Notes on the KiCAD Python API:
 #   The new KiCAD IPC Python API (docs.kicad.org/kicad-python-main/) does not
@@ -33,6 +39,7 @@
 from __future__ import annotations
 
 import argparse
+import json
 import os
 import re
 import shutil
@@ -54,6 +61,16 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("sch_file", type=Path, help="Schematic file (.kicad_sch)")
     p.add_argument("--output-dir", type=Path, default=None,
                    help="Override output directory (default: <pcb_dir>/exports)")
+    p.add_argument("--copper-layers", default=None,
+                   help="Override detected copper layers (comma-separated, e.g. F.Cu,B.Cu)")
+    p.add_argument("--ibom-script", type=Path, default=None,
+                   help="Path to generate_interactive_bom.py")
+    p.add_argument("--panel", action="store_true",
+                   help="Panel export mode: skip ERC/assembly/engineering, "
+                        "create <pcb_prefix>-with-panel.zip")
+    p.add_argument("--project-dir", type=Path, default=None,
+                   help="Project root to search for impedance_control.xlsx "
+                        "(default: directory containing the PCB file)")
     return p.parse_args()
 
 
@@ -79,6 +96,18 @@ def require_tool(name: str) -> None:
     if not shutil.which(name):
         print(f"ERROR: '{name}' not found in PATH", file=sys.stderr)
         sys.exit(1)
+
+
+def read_project_text_vars(pcb_file: Path) -> dict[str, str]:
+    """Read text_variables from the .kicad_pro file alongside the PCB."""
+    pro_file = pcb_file.parent / (pcb_file.stem + ".kicad_pro")
+    if not pro_file.is_file():
+        return {}
+    try:
+        data = json.loads(pro_file.read_text(encoding="utf-8"))
+        return {k: str(v) for k, v in data.get("text_variables", {}).items()}
+    except (json.JSONDecodeError, OSError):
+        return {}
 
 
 def detect_copper_layers(pcb_file: Path) -> str:
@@ -140,7 +169,19 @@ def preflight_drc(pcb_file: Path, out_base: Path, prefix: str) -> None:
 # Fabrication outputs
 # ---------------------------------------------------------------------------
 
-def export_gerbers(pcb_file: Path, dir_gerber: Path, copper_layers: str) -> None:
+def rename_board_outputs(directory: Path, board_name: str, prefix: str) -> None:
+    """Rename kicad-cli outputs from <board_name>* to <prefix>*.
+
+    kicad-cli names directory-mode outputs using the PCB file stem. This
+    renames them to match the desired prefix scheme.
+    """
+    for f in sorted(directory.iterdir()):
+        if f.is_file() and f.name.startswith(board_name):
+            new_name = prefix + f.name[len(board_name):]
+            f.rename(f.parent / new_name)
+
+
+def export_gerbers(pcb_file: Path, dir_gerber: Path, copper_layers: str, prefix: str) -> None:
     """
     kibot: type: gerber
     Options translated:
@@ -168,9 +209,10 @@ def export_gerbers(pcb_file: Path, dir_gerber: Path, copper_layers: str) -> None
         "--include-border-title",
         pcb_file,
     ])
+    rename_board_outputs(dir_gerber, pcb_file.stem, prefix)
 
 
-def export_drill(pcb_file: Path, dir_drill: Path) -> None:
+def export_drill(pcb_file: Path, dir_drill: Path, prefix: str) -> None:
     """
     kibot: type: excellon, pth_and_npth_single_file: true (merged, the default)
     Generates drill files with both PDF and DXF maps.
@@ -197,6 +239,7 @@ def export_drill(pcb_file: Path, dir_drill: Path) -> None:
         "--map-format", "dxf",
         pcb_file,
     ])
+    rename_board_outputs(dir_drill, pcb_file.stem, prefix)
 
 
 def export_ipc_d356(pcb_file: Path, dir_fab: Path, prefix: str) -> None:
@@ -311,6 +354,7 @@ def export_ibom(
     pcb_file: Path,
     dir_assembly: Path,
     prefix: str,
+    ibom_script: Path | None = None,
 ) -> None:
     """
     kibot: type: ibom — Interactive HTML BOM.
@@ -327,10 +371,11 @@ def export_ibom(
     """
     section("Interactive HTML BOM")
 
+    script = ibom_script or Path("/usr/local/bin/generate_interactive_bom")
     dir_assembly.mkdir(parents=True, exist_ok=True)
     os.environ['INTERACTIVE_HTML_BOM_NO_DISPLAY'] = '' # Tell interactive html bom we have no display.
     run([
-        Path("/usr/local/bin/generate_interactive_bom"),
+        script,
         "--dest-dir", dir_assembly,
         "--no-browser",
         "--name-format", f"{prefix}-ibom",
@@ -471,11 +516,24 @@ def zip_tree(root_dir: Path, output_zip: Path, exclude_suffix: str = ".zip") -> 
     print(f"     {output_zip}")
 
 
+def copy_impedance_xlsx(project_dir: Path, mfg_dir: Path) -> None:
+    """Copy impedance_control.xlsx from the project directory into manufacturing/ if present."""
+    src = project_dir / "impedance_control.xlsx"
+    if src.is_file():
+        section("Impedance Control Spreadsheet")
+        mfg_dir.mkdir(parents=True, exist_ok=True)
+        dest = mfg_dir / src.name
+        shutil.copy2(src, dest)
+        print(f"     {dest}")
+    else:
+        note("impedance_control.xlsx not found in project dir — skipping.")
+
+
 def compress_manufacturing(out_base: Path, prefix: str) -> None:
     """kibot: zip_manufacturing — source: manufacturing/**"""
     section("ZIP: Manufacturing")
     mfg_dir = out_base / "manufacturing"
-    zip_directory(mfg_dir, out_base / f"{prefix}-manufacturing.zip")
+    zip_directory(mfg_dir, out_base / "manufacturing" / f"{prefix}-manufacturing.zip")
 
 
 def compress_release(out_base: Path, prefix: str) -> None:
@@ -493,6 +551,7 @@ def main() -> None:
 
     pcb_file: Path = args.pcb_file.resolve()
     sch_file: Path = args.sch_file.resolve()
+    is_panel: bool = args.panel
 
     if not pcb_file.is_file():
         print(f"ERROR: PCB file not found: {pcb_file}", file=sys.stderr)
@@ -503,12 +562,29 @@ def main() -> None:
 
     require_tool("kicad-cli")
 
+    # Read text variables from the .kicad_pro file, then allow env var overrides.
+    text_vars = read_project_text_vars(pcb_file)
+
+    pcba_pn  = os.environ.get("PCBA_PN")  or text_vars.get("PCBA_PN",  "PROJ")
+    pcba_rev = os.environ.get("PCBA_REV") or text_vars.get("PCBA_REV", "A")
+    pcb_pn   = os.environ.get("PCB_PN")   or text_vars.get("PCB_PN",   pcba_pn)
+    pcb_rev  = os.environ.get("PCB_REV")  or text_vars.get("PCB_REV",  pcba_rev)
+
+    # Assembly files: PCBA_PN-PCBA_REV-<filename>
+    # Fab files:      PCB_PN-PCB_REV-<filename>
     board_name = pcb_file.stem
-    pcba_pn = os.environ.get("PCBA_PN", "PROJ")
-    pcba_rev = os.environ.get("PCBA_REV", "A")
-    prefix = f"{pcba_pn}-{pcba_rev}_{board_name}"
-    copper_layers = detect_copper_layers(pcb_file)
-    print(f"Detected copper layers: {copper_layers}")
+    pcba_prefix = f"{pcba_pn}-{pcba_rev}-{board_name}"
+    pcb_prefix  = f"{pcb_pn}-{pcb_rev}-{board_name}"
+
+    project_dir: Path = args.project_dir.resolve() if args.project_dir else pcb_file.parent
+
+    copper_layers = args.copper_layers or detect_copper_layers(pcb_file)
+    print(f"PCBA prefix:      {pcba_prefix}")
+    print(f"PCB prefix:       {pcb_prefix}")
+    print(f"Copper layers:    {copper_layers}")
+    print(f"Project dir:      {project_dir}")
+    if is_panel:
+        print("Mode:             panel")
 
     # Output root — exports/ subdirectory inside the project directory (overridable)
     out_base = args.output_dir.resolve() if args.output_dir else pcb_file.parent / "exports"
@@ -516,43 +592,49 @@ def main() -> None:
         shutil.rmtree(out_base)
     out_base.mkdir()
 
-    dir_fab       = out_base / "manufacturing" / "fab"
-    dir_gerber    = dir_fab / "gerber"
-    dir_drill     = dir_fab / "drill"
-    dir_assembly  = out_base / "manufacturing" / "assembly"
-    dir_pnp       = dir_assembly / "pnp"
+    dir_fab         = out_base / "manufacturing" / "fab"
+    dir_gerber      = dir_fab / "gerber"
+    dir_drill       = dir_fab / "drill"
+    dir_assembly    = out_base / "manufacturing" / "assembly"
+    dir_pnp         = dir_assembly / "pnp"
     dir_engineering = out_base / "engineering"
-    dir_openpnp   = out_base / "special" / "openpnp"
+    dir_openpnp     = out_base / "special" / "openpnp"
 
     # --- Preflight ---
-    preflight_erc(sch_file, out_base, prefix)
-    preflight_drc(pcb_file, out_base, prefix)
+    # ERC is skipped for panel exports (panel has no separate schematic).
+    if not is_panel:
+        preflight_erc(sch_file, out_base, pcba_prefix)
+    preflight_drc(pcb_file, out_base, pcb_prefix)
 
-    # --- Fabrication ---
-    export_gerbers(pcb_file, dir_gerber, copper_layers)
-    export_drill(pcb_file, dir_drill)
-    export_ipc_d356(pcb_file, dir_fab, prefix)
-    export_drawing(pcb_file, dir_fab, prefix, copper_layers)
+    # --- Fabrication (PCB_PN-PCB_REV prefix) ---
+    export_gerbers(pcb_file, dir_gerber, copper_layers, pcb_prefix)
+    export_drill(pcb_file, dir_drill, pcb_prefix)
+    export_ipc_d356(pcb_file, dir_fab, pcb_prefix)
+    export_drawing(pcb_file, dir_fab, pcb_prefix, copper_layers)
 
-    # --- Assembly ---
-    export_ibom(pcb_file, dir_assembly, prefix)
-    export_positions(pcb_file, dir_pnp, prefix)
+    # --- Assembly (PCBA_PN-PCBA_REV prefix) — skipped for panel ---
+    if not is_panel:
+        export_ibom(pcb_file, dir_assembly, pcba_prefix, args.ibom_script)
+        export_positions(pcb_file, dir_pnp, pcba_prefix)
+        export_bom(sch_file, dir_assembly, pcba_prefix)
 
-    # --- BOM ---
-    export_bom(sch_file, dir_assembly, prefix)
+    # --- Engineering — skipped for panel ---
+    if not is_panel:
+        export_schematic_pdf(sch_file, dir_engineering, pcba_prefix)
+        export_3d_step(pcb_file, dir_engineering, pcb_prefix)
 
-    # --- Engineering ---
-    export_schematic_pdf(sch_file, dir_engineering, prefix)
-    export_3d_step(pcb_file, dir_engineering, prefix)
+    # --- Specialized — skipped for panel ---
+    if not is_panel:
+        export_positions_openpnp(pcb_file, dir_openpnp, pcba_prefix)
 
-    # --- Specialized ---
-    export_positions_openpnp(pcb_file, dir_openpnp, prefix)
+    # --- Impedance control spreadsheet (copied before zipping) ---
+    copy_impedance_xlsx(project_dir, out_base / "manufacturing")
 
     # --- Compress ---
-    compress_manufacturing(out_base, prefix)
-    compress_release(out_base, prefix)
+    compress_manufacturing(out_base, pcb_prefix)
+    compress_release(out_base, pcba_prefix)
 
-    section(f"Export complete: {prefix}")
+    section(f"Export complete: {pcba_prefix} / {pcb_prefix}")
 
 
 if __name__ == "__main__":
