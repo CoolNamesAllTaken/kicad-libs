@@ -19,7 +19,7 @@ while [[ $# -gt 0 ]]; do
             echo ""
             echo "  <project_dir>   Path to the KiCAD project directory."
             echo "                  Must contain <name>.kicad_pcb and <name>.kicad_sch."
-            echo "  -j|--jlcpcb     (not yet implemented in kipy — flag accepted but ignored)
+            echo "  -j|--jlcpcb     Generate JLCPCB gerbers, drill, CPL, and BOM in special/jlcpcb/.
   -p|--panel-only Skip the main export and run only panelization (requires panel.json)."
             echo ""
             echo "Environment variables (override .kicad_pro text variables):"
@@ -36,7 +36,6 @@ while [[ $# -gt 0 ]]; do
             exit 0
             ;;
         -j|--jlcpcb)
-            echo "NOTE: JLCPCB export is not yet implemented in kipy — flag ignored."
             jlcpcb=true
             shift
             ;;
@@ -104,6 +103,9 @@ if [ -n "$COPPER_LAYERS" ]; then
 fi
 if [ -n "$IBOM_SCRIPT" ]; then
     export_py_args+=("--ibom-script" "$IBOM_SCRIPT")
+fi
+if [ "$jlcpcb" = true ]; then
+    export_py_args+=("--jlcpcb")
 fi
 
 # ---------------------------------------------------------------------------

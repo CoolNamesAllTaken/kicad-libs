@@ -71,6 +71,8 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--project-dir", type=Path, default=None,
                    help="Project root to search for impedance_control.xlsx "
                         "(default: directory containing the PCB file)")
+    p.add_argument("--jlcpcb", action="store_true",
+                   help="Generate JLCPCB-specific outputs in special/jlcpcb/")
     return p.parse_args()
 
 
@@ -203,9 +205,7 @@ def export_gerbers(pcb_file: Path, dir_gerber: Path, copper_layers: str, prefix:
         "--output", str(dir_gerber) + "/",
         "--layers", layers,
         "--subtract-soldermask",
-        "--no-netlist",
         "--no-protel-ext",
-        "--precision", "5",
         "--include-border-title",
         pcb_file,
     ])
@@ -429,6 +429,7 @@ def export_bom(sch_file: Path, dir_assembly: Path, prefix: str) -> None:
         "Reference,Value,Footprint,Quantity,Populate,Standard Cost,"
         "Manufacturer,MPN,LCSC PN,Note",
         "--group-by", "Manufacturer,MPN",
+        "--ref-range-delimiter", "", # Don't use a delimiter; list all designators in the Designator column.
         sch_file,
     ])
 
@@ -490,6 +491,152 @@ def export_positions_openpnp(pcb_file: Path, dir_openpnp: Path, prefix: str) -> 
         "--bottom-negate-x",
         pcb_file,
     ])
+
+
+def _export_jlcpcb_gerbers(
+    pcb_file: Path,
+    dir_jlcpcb: Path,
+    copper_layers: str,
+    prefix: str,
+    is_panel: bool,
+) -> None:
+    """
+    Gerbers matching jlcpcb.kibot.yml / panel_jlcpcb.kibot.yml:
+      use_protel_extensions: true    (omit --no-protel-ext)
+      gerber_precision: 4.6          --precision 6
+      plot_sheet_reference: false    (omit --include-border-title)
+      subtract_mask_from_silk: true  --subtract-soldermask
+      use_gerber_x2_attributes: false --no-netlist (X2 off by default without --no-netlist)
+      Non-panel: no paste layers.  Panel: include paste layers.
+    """
+    dir_gerber = dir_jlcpcb / "gerber"
+    dir_gerber.mkdir(parents=True, exist_ok=True)
+    if is_panel:
+        layers = (
+            f"{copper_layers},"
+            "F.SilkS,B.SilkS,F.Mask,B.Mask,F.Paste,B.Paste,"
+            "Edge.Cuts,User.Drawings,User.Comments,User.Eco1,User.Eco2"
+        )
+    else:
+        layers = (
+            f"{copper_layers},"
+            "F.SilkS,B.SilkS,F.Mask,B.Mask,"
+            "Edge.Cuts,User.Drawings,User.Comments,User.Eco1,User.Eco2"
+        )
+    run([
+        "kicad-cli", "pcb", "export", "gerbers",
+        "--output", str(dir_gerber) + "/",
+        "--layers", layers,
+        "--subtract-soldermask",
+        pcb_file,
+    ])
+    rename_board_outputs(dir_gerber, pcb_file.stem, prefix)
+
+
+def _export_jlcpcb_drill(pcb_file: Path, dir_jlcpcb: Path, prefix: str) -> None:
+    """
+    Drill matching jlcpcb.kibot.yml:
+      pth_and_npth_single_file: false  --excellon-separate-th
+      metric_units: true               --excellon-units mm
+    """
+    dir_drill = dir_jlcpcb / "drill"
+    dir_drill.mkdir(parents=True, exist_ok=True)
+    run([
+        "kicad-cli", "pcb", "export", "drill",
+        "--output", str(dir_drill) + "/",
+        "--format", "excellon",
+        "--excellon-units", "mm",
+        "--excellon-separate-th",
+        "--generate-map",
+        pcb_file,
+    ])
+    rename_board_outputs(dir_drill, pcb_file.stem, prefix)
+
+
+def _export_jlcpcb_pos(pcb_file: Path, dir_jlcpcb: Path, prefix: str) -> None:
+    """
+    CPL matching jlcpcb.kibot.yml JLCPCB_position output.
+    kicad-cli outputs: Ref,Val,Package,PosX,PosY,Rot,Side
+    JLCPCB expects:    Designator,Val,Package,Mid X,Mid Y,Rotation,Layer
+    Post-processes the CSV to rename headers accordingly.
+    """
+    import csv
+
+    raw = dir_jlcpcb / f"{prefix}_cpl_jlc_raw.csv"
+    out = dir_jlcpcb / f"{prefix}_cpl_jlc.csv"
+    run([
+        "kicad-cli", "pcb", "export", "pos",
+        "--output", raw,
+        "--format", "csv",
+        "--units", "mm",
+        "--side", "both",
+        pcb_file,
+    ])
+    header_map = {
+        "Ref":   "Designator",
+        "PosX":  "Mid X",
+        "PosY":  "Mid Y",
+        "Rot":   "Rotation",
+        "Side":  "Layer",
+    }
+    with raw.open(newline="", encoding="utf-8") as fin, \
+         out.open("w", newline="", encoding="utf-8") as fout:
+        reader = csv.DictReader(fin)
+        new_fields = [header_map.get(f, f) for f in (reader.fieldnames or [])]
+        writer = csv.DictWriter(fout, fieldnames=new_fields)
+        writer.writeheader()
+        for row in reader:
+            writer.writerow({header_map.get(k, k): v for k, v in row.items()})
+    raw.unlink()
+    print(f"     {out}")
+
+
+def _export_jlcpcb_bom(sch_file: Path, dir_jlcpcb: Path, prefix: str) -> None:
+    """
+    BOM matching jlcpcb.kibot.yml JLCPCB_bom output:
+      columns: Value->Comment, References->Designator, Footprint, LCSC PN->LCSC Part #
+    """
+    run([
+        "kicad-cli", "sch", "export", "bom",
+        "--output", dir_jlcpcb / f"{prefix}_bom_jlc.csv",
+        "--fields",
+        "Reference,Value,Footprint,QUANTITY,DNP,Manufacturer,MPN,LCSC PN,Note",
+        "--labels",
+        "Designator,Comment,Footprint,Quantity,Populate,Manufacturer,MPN,LCSC Part #,Note",
+        "--group-by", "Manufacturer,MPN",
+        "--ref-range-delimiter", "", # Don't use a delimiter; list all designators in the Designator column.
+        sch_file,
+    ])
+
+
+def export_jlcpcb(
+    pcb_file: Path,
+    sch_file: Path,
+    out_base: Path,
+    copper_layers: str,
+    pcba_prefix: str,
+    pcb_prefix: str,
+    is_panel: bool,
+) -> None:
+    """
+    JLCPCB-specific outputs matching jlcpcb.kibot.yml (non-panel) and
+    panel_jlcpcb.kibot.yml (panel).
+
+    Non-panel: gerbers + drill + CPL + BOM → {pcba_prefix}_jlcpcb.zip
+    Panel:     gerbers + drill             → {pcba_prefix}_jlcpcb_panel.zip
+    """
+    section("JLCPCB Outputs")
+    dir_jlcpcb = out_base / "special" / "jlcpcb"
+    dir_jlcpcb.mkdir(parents=True, exist_ok=True)
+
+    _export_jlcpcb_gerbers(pcb_file, dir_jlcpcb, copper_layers, pcb_prefix, is_panel)
+    _export_jlcpcb_drill(pcb_file, dir_jlcpcb, pcb_prefix)
+    if not is_panel:
+        _export_jlcpcb_pos(pcb_file, dir_jlcpcb, pcba_prefix)
+        _export_jlcpcb_bom(sch_file, dir_jlcpcb, pcba_prefix)
+
+    suffix = "jlcpcb_panel" if is_panel else "jlcpcb"
+    zip_directory(dir_jlcpcb, out_base / f"{pcba_prefix}_{suffix}.zip")
 
 
 # ---------------------------------------------------------------------------
@@ -624,6 +771,11 @@ def main() -> None:
     # --- Specialized — skipped for panel ---
     if not is_panel:
         export_positions_openpnp(pcb_file, dir_openpnp, pcba_prefix)
+
+    # --- JLCPCB specialized outputs ---
+    if args.jlcpcb:
+        export_jlcpcb(pcb_file, sch_file, out_base, copper_layers,
+                      pcba_prefix, pcb_prefix, is_panel)
 
     # --- Impedance control spreadsheet (copied before zipping) ---
     copy_impedance_xlsx(project_dir, out_base / "manufacturing")
