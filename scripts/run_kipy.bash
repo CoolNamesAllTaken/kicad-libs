@@ -8,7 +8,7 @@
 # Usage:
 #   ./run_kipy.bash [args]
 #   -i: Run the docker container as an interactive shell.
-#   [args]: Arguments to pass to kipy/export_project.bash.
+#   [args]: Arguments to pass to kipy/kipy_export_project.bash.
 ###
 scripts_dir=$(dirname "$0")
 kipy_dir=$(dirname $(dirname "$0"))/kipy
@@ -59,13 +59,13 @@ if [ "$1" == "-i" ]; then
         "bash $container_scripts_dir/install_kicad_libs.bash $container_kicad_libs_dir $container_kicad_config_dir $container_kicad_template_dir \
         && bash"
     )
-    shift # Don't pass -i flag on to export_project with rest of args.
+    shift # Don't pass -i flag on to kipy_export_project with rest of args.
 else
     bash_command=(
         "bash"
         "-c"
         "bash $container_scripts_dir/install_kicad_libs.bash $container_kicad_libs_dir $container_kicad_config_dir $container_kicad_template_dir \
-        && bash $container_kipy_dir/export_project.bash $args"
+        && bash $container_kipy_dir/kipy_export_project.bash $args"
     )
 fi
 

@@ -9,6 +9,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 EXPORT_PY="$SCRIPT_DIR/export.py"
 
 jlcpcb=false
+panel_only=false
 project=""
 
 while [[ $# -gt 0 ]]; do
@@ -18,7 +19,8 @@ while [[ $# -gt 0 ]]; do
             echo ""
             echo "  <project_dir>   Path to the KiCAD project directory."
             echo "                  Must contain <name>.kicad_pcb and <name>.kicad_sch."
-            echo "  -j|--jlcpcb     (not yet implemented in kipy — flag accepted but ignored)"
+            echo "  -j|--jlcpcb     (not yet implemented in kipy — flag accepted but ignored)
+  -p|--panel-only Skip the main export and run only panelization (requires panel.json)."
             echo ""
             echo "Environment variables forwarded to export.py:"
             echo "  PCBA_PN     Part-number prefix    (default: PROJ)"
@@ -34,6 +36,10 @@ while [[ $# -gt 0 ]]; do
         -j|--jlcpcb)
             echo "NOTE: JLCPCB export is not yet implemented in kipy — flag ignored."
             jlcpcb=true
+            shift
+            ;;
+        -p|--panel-only)
+            panel_only=true
             shift
             ;;
         *)
@@ -102,9 +108,11 @@ fi
 # Main export
 # ---------------------------------------------------------------------------
 
-echo ""
-echo "Running Python export for $project_name"
-python3 "$EXPORT_PY" "$pcb_file" "$sch_file" "${export_py_args[@]}"
+if [ "$panel_only" = false ]; then
+    echo ""
+    echo "Running Python export for $project_name"
+    python3 "$EXPORT_PY" "$pcb_file" "$sch_file" "${export_py_args[@]}"
+fi
 
 # ---------------------------------------------------------------------------
 # Panelization via KiKit Docker
