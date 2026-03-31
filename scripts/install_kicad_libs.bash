@@ -6,15 +6,29 @@
 set -e  # Exit on any error
 
 # Check if correct number of arguments provided
-if [ $# -ne 2 ]; then
-    echo "Usage: $0 <path_to_kicad-libs> <path_to_table_files>"
+if [ $# -lt 2 ] || [ $# -gt 3 ]; then
+    echo "Usage: $0 <path_to_kicad-libs> <path_to_table_files> [path_to_template]"
     echo "  <path_to_kicad-libs>: Path to folder containing lib_fp and lib_sch"
     echo "  <path_to_table_files>: Path to folder containing sym-lib-table and fp-lib-table"
+    echo "  [path_to_template]: Optional path to KiCad template dir to copy tables from if missing"
     exit 1
 fi
 
 kicad_libs_path="$1"
 table_files_path="$2"
+template_path="${3:-}"
+
+# If table files don't exist at the target path, copy from template
+if [ -n "$template_path" ]; then
+    if [ ! -f "$table_files_path/sym-lib-table" ] && [ -f "$template_path/sym-lib-table" ]; then
+        echo "Copying sym-lib-table from template: $template_path"
+        cp "$template_path/sym-lib-table" "$table_files_path/sym-lib-table"
+    fi
+    if [ ! -f "$table_files_path/fp-lib-table" ] && [ -f "$template_path/fp-lib-table" ]; then
+        echo "Copying fp-lib-table from template: $template_path"
+        cp "$template_path/fp-lib-table" "$table_files_path/fp-lib-table"
+    fi
+fi
 
 echo "Installing KiCAD libraries from $kicad_libs_path to existing library tables in $table_files_path"
 
@@ -121,7 +135,7 @@ for pretty_dir in "$kicad_libs_path/lib_fp"/*.pretty; do
     if [ -d "$pretty_dir" ]; then
         # Extract directory name without .pretty extension
         dirname=$(basename "$pretty_dir" .pretty)
-        
+
         # Check if this library is already in the table
         if ! grep -q "\"$dirname\"" "$fp_table"; then
             echo "  (lib (name \"$dirname\")(type \"KiCad\")(uri \"$kicad_libs_path/lib_fp/$dirname.pretty\")(options \"\")(descr \"\"))" >> "$temp_fp"
