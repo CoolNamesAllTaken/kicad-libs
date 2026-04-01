@@ -13,8 +13,8 @@
 #   PCB_REV   — Fab revision          (default: same as PCBA_REV)
 #
 # File naming:
-#   Assembly outputs  → PCBA_PN-PCBA_REV-<filename>
-#   Fab outputs       → PCB_PN-PCB_REV-<filename>
+#   Assembly outputs  -> PCBA_PN-PCBA_REV-<filename>
+#   Fab outputs       -> PCB_PN-PCB_REV-<filename>
 #
 # Notes on the KiCAD Python API:
 #   The new KiCAD IPC Python API (docs.kicad.org/kicad-python-main/) does not
@@ -622,8 +622,8 @@ def export_jlcpcb(
     JLCPCB-specific outputs matching jlcpcb.kibot.yml (non-panel) and
     panel_jlcpcb.kibot.yml (panel).
 
-    Non-panel: gerbers + drill + CPL + BOM → {pcba_prefix}_jlcpcb.zip
-    Panel:     gerbers + drill             → {pcba_prefix}_jlcpcb_panel.zip
+    Non-panel: gerbers + drill + CPL + BOM -> {pcba_prefix}_jlcpcb.zip
+    Panel:     gerbers + drill             -> {pcba_prefix}_jlcpcb_panel.zip
     """
     section("JLCPCB Outputs")
     dir_jlcpcb = out_base / "special" / "jlcpcb"
@@ -635,8 +635,16 @@ def export_jlcpcb(
         _export_jlcpcb_pos(pcb_file, dir_jlcpcb, pcba_prefix)
         _export_jlcpcb_bom(sch_file, dir_jlcpcb, pcba_prefix)
 
-    suffix = "jlcpcb_panel" if is_panel else "jlcpcb"
-    zip_directory(dir_jlcpcb, out_base / f"{pcba_prefix}_{suffix}.zip")
+    # Zip gerber + drill into special/jlcpcb/ for direct JLCPCB upload
+    fab_zip = dir_jlcpcb / f"{pcb_prefix}.zip"
+    with zipfile.ZipFile(fab_zip, "w", compression=zipfile.ZIP_DEFLATED) as zf:
+        for subdir in ("gerber", "drill"):
+            src = dir_jlcpcb / subdir
+            if src.is_dir():
+                for file in sorted(src.rglob("*")):
+                    if file.is_file():
+                        zf.write(file, file.relative_to(dir_jlcpcb))
+    print(f"     {fab_zip}")
 
 
 # ---------------------------------------------------------------------------
@@ -746,10 +754,10 @@ def main() -> None:
     dir_openpnp     = out_base / "special" / "openpnp"
 
     # --- Preflight ---
-    # ERC is skipped for panel exports (panel has no separate schematic).
+    # ERC and DRC is skipped for panel exports (panel has no separate schematic).
     if not is_panel:
         preflight_erc(sch_file, out_base, pcba_prefix)
-    preflight_drc(pcb_file, out_base, pcb_prefix)
+        preflight_drc(pcb_file, out_base, pcb_prefix)
 
     # --- Fabrication (PCB_PN-PCB_REV prefix) ---
     export_gerbers(pcb_file, dir_gerber, copper_layers, pcb_prefix)
