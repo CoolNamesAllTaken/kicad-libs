@@ -48,6 +48,9 @@ import sys
 import zipfile
 from pathlib import Path
 
+# Constants
+IMPEDANCE_CONTROL_FILENAME = "impedance_control.xlsx"
+
 
 # ---------------------------------------------------------------------------
 # CLI arguments
@@ -69,7 +72,7 @@ def parse_args() -> argparse.Namespace:
                    help="Panel export mode: skip ERC/assembly/engineering, "
                         "create <pcb_prefix>-with-panel.zip")
     p.add_argument("--project-dir", type=Path, default=None,
-                   help="Project root to search for impedance_control.xlsx "
+                   help=f"Project root to search for {IMPEDANCE_CONTROL_FILENAME} "
                         "(default: directory containing the PCB file)")
     p.add_argument("--jlcpcb", action="store_true",
                    help="Generate JLCPCB-specific outputs in special/jlcpcb/")
@@ -465,6 +468,8 @@ def export_3d_step(pcb_file: Path, dir_engineering: Path, prefix: str) -> None:
         "--include-pads",
         "--include-soldermask",
         "--subst-models",
+        "--drill-origin",
+        "--fill-all-vias",
         pcb_file,
     ])
 
@@ -617,6 +622,7 @@ def export_jlcpcb(
     pcba_prefix: str,
     pcb_prefix: str,
     is_panel: bool,
+    project_dir: Path | None = None,
 ) -> None:
     """
     JLCPCB-specific outputs matching jlcpcb.kibot.yml (non-panel) and
@@ -635,16 +641,21 @@ def export_jlcpcb(
         _export_jlcpcb_pos(pcb_file, dir_jlcpcb, pcba_prefix)
         _export_jlcpcb_bom(sch_file, dir_jlcpcb, pcba_prefix)
 
-    # Zip gerber + drill into special/jlcpcb/ for direct JLCPCB upload
-    fab_zip = dir_jlcpcb / f"{pcb_prefix}.zip"
-    with zipfile.ZipFile(fab_zip, "w", compression=zipfile.ZIP_DEFLATED) as zf:
-        for subdir in ("gerber", "drill"):
-            src = dir_jlcpcb / subdir
-            if src.is_dir():
-                for file in sorted(src.rglob("*")):
-                    if file.is_file():
-                        zf.write(file, file.relative_to(dir_jlcpcb))
-    print(f"     {fab_zip}")
+    # Copy impedance control spreadsheet into the jlcpcb folder if present
+    if project_dir is not None:
+        src = project_dir / IMPEDANCE_CONTROL_FILENAME
+        if src.is_file():
+            section("Impedance Control Spreadsheet (JLCPCB)")
+            shutil.copy2(src, dir_jlcpcb / src.name)
+            print(f"     {dir_jlcpcb / src.name}")
+
+    # Zip the jlcpcb folder contents back into the same folder
+    # Use zip_tree (skips .zip files) so the output archive isn't included in itself.
+    section("ZIP: JLCPCB")
+    zip_suffix = "_jlcpcb_panel" if is_panel else "_jlcpcb"
+    zip_name = f"{pcba_prefix}{zip_suffix}.zip"
+    zip_tree(dir_jlcpcb, dir_jlcpcb / zip_name)
+
 
 
 # ---------------------------------------------------------------------------
@@ -671,7 +682,7 @@ def zip_tree(root_dir: Path, output_zip: Path, exclude_suffix: str = ".zip") -> 
 
 def copy_impedance_xlsx(project_dir: Path, mfg_dir: Path) -> None:
     """Copy impedance_control.xlsx from the project directory into manufacturing/ if present."""
-    src = project_dir / "impedance_control.xlsx"
+    src = project_dir / IMPEDANCE_CONTROL_FILENAME
     if src.is_file():
         section("Impedance Control Spreadsheet")
         mfg_dir.mkdir(parents=True, exist_ok=True)
@@ -783,7 +794,7 @@ def main() -> None:
     # --- JLCPCB specialized outputs ---
     if args.jlcpcb:
         export_jlcpcb(pcb_file, sch_file, out_base, copper_layers,
-                      pcba_prefix, pcb_prefix, is_panel)
+                      pcba_prefix, pcb_prefix, is_panel, project_dir)
 
     # --- Impedance control spreadsheet (copied before zipping) ---
     copy_impedance_xlsx(project_dir, out_base / "manufacturing")
