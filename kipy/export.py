@@ -353,6 +353,65 @@ def export_drawing(
 # Assembly outputs
 # ---------------------------------------------------------------------------
 
+def export_assembly_drawing(
+    pcb_file: Path,
+    dir_assembly: Path,
+    prefix: str,
+) -> None:
+    """
+    Multi-page assembly drawing PDF.
+
+    Pages:
+      1. Front Assembly  — Edge.Cuts + F.SilkS + F.CrtYd
+      2. Back Assembly   — Edge.Cuts + B.SilkS + B.CrtYd
+      3. Front Fab       — Edge.Cuts + F.Fab
+      4. Back Fab        — Edge.Cuts + B.Fab
+    """
+    section("Assembly Drawing PDF")
+    dir_assembly.mkdir(parents=True, exist_ok=True)
+
+    pages: list[tuple[str, str, str]] = [
+        ("front-assembly", "Edge.Cuts,F.SilkS,F.CrtYd", "Front Assembly"),
+        ("back-assembly",  "Edge.Cuts,B.SilkS,B.CrtYd", "Back Assembly"),
+        ("front-fab",      "Edge.Cuts,F.Fab",            "Front Fab"),
+        ("back-fab",       "Edge.Cuts,B.Fab",            "Back Fab"),
+    ]
+
+    page_pdfs: list[Path] = []
+    for name, layers, sheet_name in pages:
+        out = dir_assembly / f"{prefix}-{name}.pdf"
+        run([
+            "kicad-cli", "pcb", "export", "pdf",
+            "--output", out,
+            "--layers", layers,
+            "--include-border-title",
+            "--define-var", f"EXPORT_SHEET={sheet_name}",
+            "--mode-single",
+            pcb_file,
+        ])
+        page_pdfs.append(out)
+
+    merged = dir_assembly / f"{prefix}-assembly.pdf"
+    if shutil.which("pdfunite"):
+        run(["pdfunite", *page_pdfs, merged])
+        for p in page_pdfs:
+            p.unlink(missing_ok=True)
+        print(f"    Merged  {merged}")
+    elif shutil.which("gs"):
+        run([
+            "gs", "-dBATCH", "-dNOPAUSE", "-q",
+            "-sDEVICE=pdfwrite",
+            f"-sOutputFile={merged}",
+            *page_pdfs,
+        ])
+        for p in page_pdfs:
+            p.unlink(missing_ok=True)
+        print(f"    Merged (ghostscript)  {merged}")
+    else:
+        note("pdfunite/gs not found — individual page PDFs left in place.")
+        note("Install poppler-utils (brew install poppler) to auto-merge.")
+
+
 def export_ibom(
     pcb_file: Path,
     dir_assembly: Path,
@@ -778,6 +837,7 @@ def main() -> None:
 
     # --- Assembly (PCBA_PN-PCBA_REV prefix) — skipped for panel ---
     if not is_panel:
+        export_assembly_drawing(pcb_file, dir_assembly, pcba_prefix)
         export_ibom(pcb_file, dir_assembly, pcba_prefix, args.ibom_script)
         export_positions(pcb_file, dir_pnp, pcba_prefix)
         export_bom(sch_file, dir_assembly, pcba_prefix)
