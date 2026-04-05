@@ -115,7 +115,7 @@ fi
 if [ "$panel_only" = false ]; then
     echo ""
     echo "Running Python export for $project_name"
-    python3 "$EXPORT_PY" "$pcb_file" "$sch_file" "${export_py_args[@]}"
+    python3 "$EXPORT_PY" "$pcb_file" "$sch_file" "${export_py_args[@]}" || exit $?
 fi
 
 # ---------------------------------------------------------------------------

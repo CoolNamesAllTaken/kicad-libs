@@ -141,15 +141,22 @@ def detect_copper_layers(pcb_file: Path) -> str:
 def preflight_erc(sch_file: Path, out_base: Path, prefix: str) -> None:
     """
     kibot: preflight.erc: true
-    Runs ERC on the schematic and writes a report.
+    Runs ERC on the schematic and writes a report. Aborts on any violations.
     """
     section("Preflight: ERC")
     out_base.mkdir(parents=True, exist_ok=True)
-    run([
-        "kicad-cli", "sch", "erc",
-        "--output", out_base / f"{prefix}-erc.txt",
-        sch_file,
-    ])
+    report = out_base / f"{prefix}-erc.txt"
+    try:
+        run([
+            "kicad-cli", "sch", "erc",
+            "--exit-code-violations",
+            "--output", report,
+            sch_file,
+        ])
+    except subprocess.CalledProcessError:
+        print(f"\nERROR: ERC violations found — export aborted. Review: {report}",
+              file=sys.stderr)
+        sys.exit(1)
 
 
 def preflight_drc(pcb_file: Path, out_base: Path, prefix: str) -> None:
@@ -157,17 +164,25 @@ def preflight_drc(pcb_file: Path, out_base: Path, prefix: str) -> None:
     kibot: preflight.drc: true
     kibot: preflight.fill_zones: true           --refill-zones
     kibot: preflight.update_pcb_characteristics  --save-board
+    Aborts on any violations.
     """
     section("Preflight: DRC")
-    run([
-        "kicad-cli", "pcb", "drc",
-        "--output", out_base / f"{prefix}-drc.txt",
-        "--format", "report",
-        "--schematic-parity",
-        "--refill-zones",
-        "--save-board",
-        pcb_file,
-    ])
+    report = out_base / f"{prefix}-drc.txt"
+    try:
+        run([
+            "kicad-cli", "pcb", "drc",
+            "--exit-code-violations",
+            "--output", report,
+            "--format", "report",
+            "--schematic-parity",
+            "--refill-zones",
+            "--save-board",
+            pcb_file,
+        ])
+    except subprocess.CalledProcessError:
+        print(f"\nERROR: DRC violations found — export aborted. Review: {report}",
+              file=sys.stderr)
+        sys.exit(1)
 
 
 # ---------------------------------------------------------------------------
