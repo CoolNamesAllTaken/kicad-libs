@@ -1,0 +1,316 @@
+(footprint "Hirose_FH34SRJ-6S-0.5SH_1x6-1MP_P0.50mm_Horizontal_Mirrored"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(tags "connector Hirose FH34SRJ horizontal")
+	(property "Reference" "REF**"
+		(at 0 -2 0)
+		(layer "F.SilkS")
+		(uuid "7347e42b-3c8e-44ed-8cfc-0597c0c4afee")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "Hirose_FH34SRJ-6S-0.5SH_1x6-1MP_P0.50mm_Horizontal_Mirrored"
+		(at 0 3.9 0)
+		(layer "F.Fab")
+		(uuid "11a37534-fa52-4165-8294-4e7379be5431")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "00e511fc-9451-41c7-9fcf-47e89a3c3661")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "519f353d-84cf-4f1a-bcdb-30c1f5762a3f")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(fp_line
+		(start -2.6 1.33)
+		(end -2.6 3.07)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "6839a048-ccd0-475b-bbba-b3ca62e95aec")
+	)
+	(fp_line
+		(start -2.6 3.07)
+		(end 2.6 3.07)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "24039c0e-127d-4990-9869-abfd30cf8cb3")
+	)
+	(fp_line
+		(start -2.4 -1)
+		(end -2.4 -0.5)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "757c15c8-dead-46f5-ae4d-4bf7dee8e75b")
+	)
+	(fp_line
+		(start -1.9 -1)
+		(end -2.4 -1)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "b5c676d5-9d4a-489b-af40-c81820acc829")
+	)
+	(fp_line
+		(start 1.9 -1)
+		(end 1.9 -1.5)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "8f88aace-20ea-4bfe-b1a1-5777d75d208f")
+	)
+	(fp_line
+		(start 1.9 -1)
+		(end 2.4 -1)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "5b41d6f2-4a64-46ed-afaa-676596be62f3")
+	)
+	(fp_line
+		(start 2.4 -1)
+		(end 2.4 -0.5)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "a15b9230-0a6e-4930-adf4-a53932a652b5")
+	)
+	(fp_line
+		(start 2.6 3.07)
+		(end 2.6 1.33)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "6a7a2d66-f396-4eb3-8b87-67c7213db65c")
+	)
+	(fp_line
+		(start -2.7 -1.6)
+		(end -2.7 3.2)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "d8f9819b-0351-4839-a244-aafced72ecd0")
+	)
+	(fp_line
+		(start -2.7 -1.6)
+		(end 2.7 -1.6)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "6e77923c-2816-4d4f-b09b-ef40fd4f35b2")
+	)
+	(fp_line
+		(start -2.7 3.2)
+		(end 2.7 3.2)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "54be8908-e117-4f39-bf9c-4b3cc9faaf8f")
+	)
+	(fp_line
+		(start 2.7 3.2)
+		(end 2.7 -1.6)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "2b7e9e21-da76-4379-8cb9-1df24680096f")
+	)
+	(fp_line
+		(start -2.4 -1)
+		(end -2.4 2.7)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "e49116e5-f4dd-4fb2-89f0-9354ce57bf6b")
+	)
+	(fp_line
+		(start -2.4 2.7)
+		(end 2.4 2.7)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "ec1288b6-656c-4579-8a27-cdb26326746e")
+	)
+	(fp_line
+		(start 0 -1)
+		(end -2.4 -1)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "2f465ec8-0185-4ebf-8fa8-e9ba645ff60b")
+	)
+	(fp_line
+		(start 0 -1)
+		(end 2.4 -1)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "c82c98d5-3ea7-41fa-8de2-3d71d76a30fb")
+	)
+	(fp_line
+		(start 1.25 -0.292893)
+		(end 0.75 -1)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "0605b41e-e28f-4512-b417-6f689ecbad90")
+	)
+	(fp_line
+		(start 1.75 -1)
+		(end 1.25 -0.292893)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "a181e2bf-0465-4373-96e4-1f0d95a5eda1")
+	)
+	(fp_line
+		(start 2.4 -1)
+		(end 2.4 2.7)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "f82bb240-e84e-4bb7-8f1c-95f55cd84a63")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 2 0)
+		(layer "F.Fab")
+		(uuid "8554adc7-eea2-436f-819e-e02f983e2bee")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "1" smd rect
+		(at 1.25 -0.4)
+		(size 0.3 0.8)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "c7f2ef96-0582-42e0-9656-27ff1d513abf")
+	)
+	(pad "2" smd rect
+		(at 0.75 -0.4)
+		(size 0.3 0.8)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "10548c5f-59c1-422b-9da8-fe1dbdcdc57d")
+	)
+	(pad "3" smd rect
+		(at 0.25 -0.4)
+		(size 0.3 0.8)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "86c7997b-a709-40a8-abc2-2d8dd9cd5b99")
+	)
+	(pad "4" smd rect
+		(at -0.25 -0.4)
+		(size 0.3 0.8)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "52fe91fd-cc9f-4026-9a72-212657bed591")
+	)
+	(pad "5" smd rect
+		(at -0.75 -0.4)
+		(size 0.3 0.8)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "957861f2-6440-4b06-9ec9-35d6f4292a7d")
+	)
+	(pad "6" smd rect
+		(at -1.25 -0.4)
+		(size 0.3 0.8)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "e3431459-65dd-418c-af84-a7232d2a366e")
+	)
+	(pad "MP" smd rect
+		(at -2.25 2.25)
+		(size 0.4 0.8)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "559a1c3c-254f-4821-94e7-ff5335378336")
+	)
+	(pad "MP" smd rect
+		(at 2.25 2.25)
+		(size 0.4 0.8)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "17e06d65-466e-49a0-9b56-307601b2db9b")
+	)
+	(embedded_fonts no)
+	(model ":KICAD_LIBS_DIR:lib_3d/Custom_Connector_FFC-FPC/Hirose_FH34SRJ-6S-0.5SH_1x6-1MP_P0.50mm_Horizontal.stp"
+		(opacity 0.6600)
+		(offset
+			(xyz 0 -0.8 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz -0 -0 -0)
+		)
+	)
+)

@@ -1,0 +1,218 @@
+(footprint "FC-CO-5000"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(descr "Prosense carbon monoxide electrochemical sensor, https://en.szprosense.com/storage/file/20260113/1768270760376428.pdf")
+	(tags "Prosense CO sensor")
+	(property "Reference" "REF**"
+		(at 0 -4.25 0)
+		(layer "F.SilkS")
+		(uuid "f6cf60ef-e504-4341-92b7-3eda8ffc7f7b")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "FC-CO-5000"
+		(at 0 14.25 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "ea6afbf4-8f69-4d2d-84d1-f079210e0916")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "43780651-7a3b-468f-9ba3-678081e91f9a")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "01a72cd5-b140-4e34-aeaa-2f39519815d4")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr through_hole)
+	(fp_arc
+		(start -5 8.4)
+		(mid 0 -2.247884)
+		(end 5 8.4)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "5d9cd76f-d7de-47da-ac2f-45ddf3c615cb")
+	)
+	(fp_line
+		(start -5 12.65)
+		(end -5 8.399999)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "f0986411-4266-48b8-9491-c7f03d73a22b")
+	)
+	(fp_line
+		(start 5 12.65)
+		(end -5 12.65)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "66dabf86-2471-463e-a138-2af54f540a80")
+	)
+	(fp_line
+		(start 5 12.65)
+		(end 4.999998 8.4)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "49fe7b8e-8ec1-424f-bcae-9fc0eee3f6c7")
+	)
+	(fp_arc
+		(start -5 8.4)
+		(mid 0 -2.247884)
+		(end 5 8.4)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "4b9aaee2-c556-4db3-b0ce-661e987311b7")
+	)
+	(fp_line
+		(start -4.15 11.5)
+		(end -4.15 9.122114)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "89061ed7-e367-47a9-9672-98986c0511c6")
+	)
+	(fp_line
+		(start -4.15 11.5)
+		(end 4.15 11.5)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "6a76422c-1b4c-4b6b-9ea8-f603866120ef")
+	)
+	(fp_line
+		(start 0 -1.9)
+		(end -1 -2.83)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "f7f980e4-a836-4fcc-8d95-5dc5ee774f9d")
+	)
+	(fp_line
+		(start 0 -1.9)
+		(end 1 -2.83)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "e9fa6860-1ee3-45ba-a1b2-ec3734cf9436")
+	)
+	(fp_line
+		(start 4.15 11.5)
+		(end 4.15 9.122114)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "72b8f61b-f7c9-491d-b3f8-317343edb9d5")
+	)
+	(fp_circle
+		(center 0 4.25)
+		(end 6.4 4.25)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "ee97bbfe-286c-471f-9787-2f322b9bcde4")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 4.25 0)
+		(layer "F.Fab")
+		(uuid "9e6bc0d4-f82d-4be2-ba9a-033830769eff")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "1" thru_hole rect
+		(at 0 0)
+		(size 1.8 1.8)
+		(drill 1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "111a0c3d-6201-469a-a1dd-54226a0a8d36")
+	)
+	(pad "2" thru_hole circle
+		(at -3.75 11.5)
+		(size 1.8 1.8)
+		(drill 1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "36b7fc24-1096-4e61-a034-8ff95bd1379a")
+	)
+	(pad "2" thru_hole circle
+		(at 3.75 11.5)
+		(size 1.8 1.8)
+		(drill 1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "6585dfb5-4ff9-407e-be4e-67cf9a996ddc")
+	)
+	(embedded_fonts no)
+	(model "${KICAD_LIBS_DIR}/lib_3d/Custom_Sensor/FC-CO-5000.stp"
+		(offset
+			(xyz 0 -4.5 7.2)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 90 -0 -180)
+		)
+	)
+)
