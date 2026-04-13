@@ -1,0 +1,40 @@
+{
+    "layout": {
+        "hspace": "3mm",
+        "vspace": "3mm",
+        "rotation": "270deg",
+        "alternation": "cols",
+        "rows": "2",
+        "cols": "2",
+        "hbackbone": "5mm",
+        "vbackbone": "10mm",
+        "vbonecut": "False",
+        "hbonecut": "False"
+    },
+    "tabs": {
+        "type": "annotation"
+    },
+    "cuts": {
+        "type": "mousebites"
+    },
+    "framing": {
+        "type": "railstb",
+        "width": "8mm",
+        "cuts": "none"
+    },
+    "tooling": {
+        "type": "4hole",
+        "hoffset": "4mm",
+        "voffset": "4mm"
+    },
+    "fiducials": {
+        "type": "4fid",
+        "hoffset": "10mm",
+        "voffset": "4mm",
+        "opening": "2mm"
+    },
+    "copperfill": {
+        "type": "hatched",
+        "width": "0.5mm"
+    }
+}
