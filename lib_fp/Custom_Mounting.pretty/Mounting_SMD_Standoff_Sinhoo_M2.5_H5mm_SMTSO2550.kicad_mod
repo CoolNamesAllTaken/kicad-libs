@@ -1,0 +1,198 @@
+(footprint "Mounting_SMD_Standoff_Sinhoo_M2.5_H5mm_SMTSO2550"
+	(version 20260206)
+	(generator "pcbnew")
+	(generator_version "10.0")
+	(layer "F.Cu")
+	(descr "Mounting Hardware, inside through hole M2.5, height 5, Sinhoo SMTSO2550 (https://www.lcsc.com/datasheet/C2916359.pdf)")
+	(tags "Mounting M2.5 SMTSO2550")
+	(property "Reference" "REF**"
+		(at 0 -4.65 0)
+		(layer "F.SilkS")
+		(uuid "6480bc34-e909-46f3-bf7a-78841dae74e6")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "Mounting_SMD_Standoff_Sinhoo_M2.5_H5mm_SMTSO2550"
+		(at 0 4.65 0)
+		(layer "F.Fab")
+		(uuid "555b0f8e-0c36-407e-8091-7ea4d66de575")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "860b5675-327c-413e-bda3-bfdb3f7385c6")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "437f8edf-db84-4c49-8265-30730be929d1")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "KiLib_Generator" ""
+		(at 0 0 0)
+		(layer "F.SilkS")
+		(hide yes)
+		(uuid "634471d5-0a9b-48b0-8647-68b678aebea4")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd allow_soldermask_bridges)
+	(duplicate_pad_numbers_are_jumpers no)
+	(fp_arc
+		(start -2.61 0)
+		(mid -2.201252 -1.402352)
+		(end -1.103034 -2.365463)
+		(stroke
+			(width 0.8)
+			(type solid)
+		)
+		(layer "F.Paste")
+		(uuid "8e945876-4e66-4695-ab1b-9ee3ed470b4a")
+	)
+	(fp_arc
+		(start 0 -2.61)
+		(mid 1.402352 -2.201252)
+		(end 2.365463 -1.103034)
+		(stroke
+			(width 0.8)
+			(type solid)
+		)
+		(layer "F.Paste")
+		(uuid "0e3fd949-de88-4ae5-bf29-5d7259d5972a")
+	)
+	(fp_arc
+		(start 0 2.61)
+		(mid -1.402352 2.201252)
+		(end -2.365463 1.103034)
+		(stroke
+			(width 0.8)
+			(type solid)
+		)
+		(layer "F.Paste")
+		(uuid "a03aafab-db16-480c-bc10-b607a942184c")
+	)
+	(fp_arc
+		(start 2.61 0)
+		(mid 2.201252 1.402352)
+		(end 1.103034 2.365463)
+		(stroke
+			(width 0.8)
+			(type solid)
+		)
+		(layer "F.Paste")
+		(uuid "a1bed916-e6b5-4a43-83b9-631361bf0f0f")
+	)
+	(fp_circle
+		(center 0 0)
+		(end 3.5 0)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "6f6f9910-de66-45fe-b125-2884e60e4d06")
+	)
+	(fp_circle
+		(center 0 0)
+		(end 3 0)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "4e3cfcc2-f717-49ef-a707-4c0480144d8d")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(uuid "50859dfa-b59b-4775-9304-1fd3e6b380bc")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "" np_thru_hole circle
+		(at 0 0)
+		(size 4.22 4.22)
+		(drill 4.22)
+		(layers "*.Cu" "*.Mask")
+		(uuid "cc947c58-06ab-418d-a9cd-b47a87e93955")
+	)
+	(pad "1" smd circle
+		(at -2.61 0)
+		(size 0.992 0.992)
+		(layers "F.Cu")
+		(uuid "94ad7f5c-cbd7-4ffa-ab0b-4f17a07e2519")
+	)
+	(pad "1" smd circle
+		(at 0 -2.61)
+		(size 0.992 0.992)
+		(layers "F.Cu")
+		(uuid "fad4bb54-f4b3-4906-9eb6-290c6ba165f4")
+	)
+	(pad "1" smd circle
+		(at 0 2.61)
+		(size 0.992 0.992)
+		(layers "F.Cu")
+		(uuid "d42fff95-640b-40bd-a707-b11feb4bc4cb")
+	)
+	(pad "1" smd custom
+		(at 2.61 0)
+		(size 0.98 0.98)
+		(layers "F.Cu" "F.Mask")
+		(options
+			(clearance outline)
+			(anchor circle)
+		)
+		(primitives
+			(gr_circle
+				(center -2.61 0)
+				(end 0 0)
+				(width 1)
+				(fill no)
+			)
+		)
+		(uuid "d6f35044-163b-4e4d-8989-123c5c58cd74")
+	)
+	(embedded_fonts no)
+	(model "${KICAD_LIBS_DIR}/lib_3d/Custom_Mounting/Sinhoo_SMTSO2550.step"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
+)

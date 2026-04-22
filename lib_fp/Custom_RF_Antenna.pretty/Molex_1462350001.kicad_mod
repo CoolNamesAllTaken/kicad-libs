@@ -1,0 +1,199 @@
+(footprint "Molex_1462350001"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(descr "Molex PCB Mount GNSS Antenna")
+	(tags "Molex PCB Mount GNSS Antenna")
+	(property "Reference" "REF**"
+		(at 0 -2.6 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "01a2e3bf-d251-4e4b-876b-2849b9b2cf6a")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.1)
+			)
+		)
+	)
+	(property "Value" "Molex_1462350001"
+		(at 0 1 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "53494b28-bcf3-4788-bfb7-7efd66af5f7f")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/146/146235/1462350001_sd.pdf"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "aebf17df-0faf-43da-b076-b8149aab738f")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" "PCB Mount GNSS Antenna"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "034f28fe-e1d6-4fbc-ae66-42dcdada04c9")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(fp_rect
+		(start -2.72 -1.74)
+		(end -1.18 -0.2)
+		(stroke
+			(width 0.001)
+			(type solid)
+		)
+		(fill yes)
+		(layers "F.Cu" "F.Mask")
+		(uuid "6db912c4-5b49-421a-9504-3d42a99f179f")
+	)
+	(fp_rect
+		(start 1.18 -1.74)
+		(end 2.72 -0.2)
+		(stroke
+			(width 0.001)
+			(type solid)
+		)
+		(fill yes)
+		(layers "F.Cu" "F.Mask")
+		(uuid "7bdc33b1-7116-47fa-94ec-7083b64c991d")
+	)
+	(fp_rect
+		(start 1.18 0.2)
+		(end 2.72 1.74)
+		(stroke
+			(width 0.001)
+			(type solid)
+		)
+		(fill yes)
+		(layers "F.Cu" "F.Mask")
+		(uuid "d3a3b60a-7d12-4627-9f1c-594a35ad45de")
+	)
+	(fp_rect
+		(start -2.85 -1.9)
+		(end 2.85 1.9)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(fill no)
+		(layer "F.SilkS")
+		(uuid "366e63c8-e39c-4f25-ba82-953de0f87197")
+	)
+	(fp_circle
+		(center -1.95 2.2)
+		(end -1.95 2.1)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(fill no)
+		(layer "F.SilkS")
+		(uuid "fc0b31b5-fc7c-4349-8415-15b09e4da482")
+	)
+	(fp_rect
+		(start -2.72 -1.74)
+		(end -1.18 -0.2)
+		(stroke
+			(width 0.001)
+			(type solid)
+		)
+		(fill yes)
+		(layer "F.Paste")
+		(uuid "ee557570-b623-4e6c-9722-dcfff29f168b")
+	)
+	(fp_rect
+		(start 2.72 -1.74)
+		(end 1.18 -0.2)
+		(stroke
+			(width 0.001)
+			(type solid)
+		)
+		(fill yes)
+		(layer "F.Paste")
+		(uuid "203aa880-b2c5-4122-b64b-0afa46f58789")
+	)
+	(fp_rect
+		(start 2.72 1.74)
+		(end 1.18 0.2)
+		(stroke
+			(width 0.001)
+			(type solid)
+		)
+		(fill yes)
+		(layer "F.Paste")
+		(uuid "31a6b506-3297-4c3a-81e8-b67d9a8c9896")
+	)
+	(fp_rect
+		(start -3.25 -2.2)
+		(end 3.25 2.2)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "54299ad3-3880-4ac2-9c88-17d30a029895")
+	)
+	(fp_rect
+		(start -2.5 -1.5)
+		(end 2.5 1.5)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "bd8411f9-c09b-45d8-936e-9cfc99b89085")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 2.5 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "1225e035-4ec5-4f01-b23f-1f4343fad183")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "1" smd rect
+		(at -1.95 0.97)
+		(size 1.54 1.54)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "70a479c9-b0ab-42d7-81d8-4d7850b520fa")
+	)
+	(embedded_fonts no)
+	(model "${KICAD_LIBS_DIR}/lib_3d/Custom_RF_Antenna/1462350001.stp"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz -90 -0 -180)
+		)
+	)
+)
