@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 # ===========================================================================
 # export.py — KiCAD Python export script
-# Translated from config.kibot.yml
 #
 # Usage:
 #   python3 export.py <board.kicad_pcb> <schematic.kicad_sch>
@@ -58,7 +57,7 @@ IMPEDANCE_CONTROL_FILENAME = "impedance_control.xlsx"
 
 def parse_args() -> argparse.Namespace:
     p = argparse.ArgumentParser(
-        description="KiCAD export script — equivalent to running KiBot with config.kibot.yml",
+        description="KiCAD export script for generating fabrication and assembly outputs",
     )
     p.add_argument("pcb_file", type=Path, help="Board file (.kicad_pcb)")
     p.add_argument("sch_file", type=Path, help="Schematic file (.kicad_sch)")
@@ -139,10 +138,7 @@ def detect_copper_layers(pcb_file: Path) -> str:
 # ---------------------------------------------------------------------------
 
 def preflight_erc(sch_file: Path, out_base: Path, prefix: str) -> None:
-    """
-    kibot: preflight.erc: true
-    Runs ERC on the schematic and writes a report. Aborts on any violations.
-    """
+    """Runs ERC on the schematic, writes a report, and aborts on any violations."""
     section("Preflight: ERC")
     out_base.mkdir(parents=True, exist_ok=True)
     report = out_base / f"{prefix}-erc.txt"
@@ -160,12 +156,7 @@ def preflight_erc(sch_file: Path, out_base: Path, prefix: str) -> None:
 
 
 def preflight_drc(pcb_file: Path, out_base: Path, prefix: str) -> None:
-    """
-    kibot: preflight.drc: true
-    kibot: preflight.fill_zones: true           --refill-zones
-    kibot: preflight.update_pcb_characteristics  --save-board
-    Aborts on any violations.
-    """
+    """Runs DRC on the PCB with zone refill and board save. Aborts on any violations."""
     section("Preflight: DRC")
     report = out_base / f"{prefix}-drc.txt"
     try:
@@ -203,17 +194,10 @@ def rename_board_outputs(directory: Path, board_name: str, prefix: str) -> None:
 
 def export_gerbers(pcb_file: Path, dir_gerber: Path, copper_layers: str, prefix: str) -> None:
     """
-    kibot: type: gerber
-    Options translated:
-      subtract_mask_from_silk: true     --subtract-soldermask
-      use_gerber_x2_attributes: true    X2 is on by default in kicad-cli
-      use_gerber_net_attributes: false  --no-netlist
-      use_protel_extensions: false      --no-protel-ext
-      gerber_precision: 4.5             --precision 5 (5 decimal digits)
-      plot_sheet_reference: true        --include-border-title
-    Note: line_width, tent_vias, exclude_pads_from_silkscreen are board-level
-    plot settings with no kicad-cli flag; configure them in the PCB file.
-    Note: create_gerber_job_file is generated automatically by kicad-cli.
+    Exports gerber files for all copper, mask, silk, paste, edge, and user layers.
+    Subtracts soldermask from silkscreen, omits Protel extensions, includes border title.
+    Note: line_width, tent_vias, and exclude_pads_from_silkscreen are board-level plot
+    settings; configure them in the PCB file.
     """
     section("Gerbers")
     dir_gerber.mkdir(parents=True, exist_ok=True)
@@ -231,10 +215,7 @@ def export_gerbers(pcb_file: Path, dir_gerber: Path, copper_layers: str, prefix:
 
 
 def export_drill(pcb_file: Path, dir_drill: Path, prefix: str) -> None:
-    """
-    kibot: type: excellon, pth_and_npth_single_file: true (merged, the default)
-    Generates drill files with both PDF and DXF maps.
-    """
+    """Exports Excellon drill files with PDF and DXF drill maps."""
     section("Drill files (PDF map)")
     dir_drill.mkdir(parents=True, exist_ok=True)
     run([
@@ -262,8 +243,7 @@ def export_drill(pcb_file: Path, dir_drill: Path, prefix: str) -> None:
 
 def export_ipc_d356(pcb_file: Path, dir_fab: Path, prefix: str) -> None:
     """
-    kibot: type: netlist, format: ipc
-    IPC-D-356 netlist via the pcbnew scripting module.
+    Exports an IPC-D-356 netlist via the pcbnew scripting module.
     kicad-cli has no IPC-D-356 command (ipc2581 is a different standard).
     """
     section("IPC-D-356 Netlist")
@@ -303,17 +283,15 @@ def export_drawing(
     copper_layers: str,
 ) -> None:
     """
-    kibot: type: pcb_print — multi-page fabrication drawing PDF.
-    KiBot's pcb_print can composite multiple layers per page in one shot.
-    kicad-cli exports one page at a time, so we generate individual PDFs and
-    merge them with pdfunite (poppler) or gs (ghostscript).
+    Generates a multi-page fabrication drawing PDF. Individual page PDFs are merged
+    with pdfunite (poppler) or ghostscript.
 
-    Pages defined in config.kibot.yml:
+    Pages:
       1. Primary Side   — F.Cu + F.Mask + F.SilkS + F.Paste + Edge.Cuts + User.Drawings
       2. Secondary Side — B.Cu + B.Mask + B.SilkS + B.Paste + Edge.Cuts
       3. Primary Paste  — F.Paste + Edge.Cuts
       4. Secondary Paste — B.Paste + Edge.Cuts
-      5+. Copper Layer  — one page per copper layer (repeat_for_layer / repeat_layers: copper)
+      5+. Copper Layer  — one page per copper layer
     """
     section("Technical Drawing PDF")
 
@@ -324,7 +302,7 @@ def export_drawing(
         ("secondary-paste", "B.Paste,Edge.Cuts",                                    "Secondary Paste"),
     ]
 
-    # Add one page per copper layer (kibot: repeat_for_layer / repeat_layers: copper)
+    # Add one page per copper layer
     for layer in copper_layers.split(","):
         safe = layer.replace(".", "")
         pages.append((f"copper-{safe}", f"{layer},Edge.Cuts", layer))
@@ -434,17 +412,9 @@ def export_ibom(
     ibom_script: Path | None = None,
 ) -> None:
     """
-    kibot: type: ibom — Interactive HTML BOM.
-    ibom is not part of kicad-cli; it requires the InteractiveHtmlBom plugin:
-      https://github.com/openscopeproject/InteractiveHtmlBom
-    Set --ibom-script or the IBOM_SCRIPT env var to the path of
-    generate_interactive_bom.py to enable.
-    Options:
-      include_tracks: true     --include-tracks
-      include_nets: true       --include-nets
-      blacklist_empty_val: true  --blacklist-empty-val
-      dark_mode: true          --dark-mode
-      highlight_pin1: true     --highlight-pin1 all
+    Generates an Interactive HTML BOM using the InteractiveHtmlBom plugin.
+    Requires --ibom-script pointing to generate_interactive_bom.py.
+    Outputs include tracks, nets, and highlights pin 1 in dark mode.
     """
     section("Interactive HTML BOM")
 
@@ -466,10 +436,7 @@ def export_ibom(
 
 
 def export_positions(pcb_file: Path, dir_pnp: Path, prefix: str) -> None:
-    """
-    kibot: type: position, format: ASCII, only_smd: false
-    Standard pick-and-place CSV (both sides, all components including THT).
-    """
+    """Exports standard pick-and-place CSV covering both sides and all component types."""
     section("Pick and Place")
     dir_pnp.mkdir(parents=True, exist_ok=True)
     run([
@@ -488,11 +455,8 @@ def export_positions(pcb_file: Path, dir_pnp: Path, prefix: str) -> None:
 
 def export_bom(sch_file: Path, dir_assembly: Path, prefix: str) -> None:
     """
-    kibot: type: bom — BOM CSV.
-    group_fields: [Manufacturer, MPN]   --group-by "Manufacturer,MPN"
-    Columns and labels mirror config.kibot.yml exactly.
-    Note: csv.hide_pcb_info and csv.quote_all have no kicad-cli equivalents;
-    the output is standard CSV. Use a post-processing step if needed.
+    Exports a BOM CSV grouped by Footprint, DNP, Manufacturer, and MPN.
+    Outputs standard CSV; use a post-processing step for custom formatting if needed.
     """
     section("BOM CSV")
     dir_assembly.mkdir(parents=True, exist_ok=True)
@@ -505,7 +469,7 @@ def export_bom(sch_file: Path, dir_assembly: Path, prefix: str) -> None:
         "--labels",
         "Reference,Value,Footprint,Quantity,Populate,Standard Cost,"
         "Manufacturer,MPN,LCSC PN,Note",
-        "--group-by", "Manufacturer,MPN",
+        "--group-by", "Footprint,DNP,Manufacturer,MPN",
         "--ref-range-delimiter", "", # Don't use a delimiter; list all designators in the Designator column.
         sch_file,
     ])
@@ -516,7 +480,7 @@ def export_bom(sch_file: Path, dir_assembly: Path, prefix: str) -> None:
 # ---------------------------------------------------------------------------
 
 def export_schematic_pdf(sch_file: Path, dir_engineering: Path, prefix: str) -> None:
-    """kibot: type: pdf_sch_print"""
+    """Exports the schematic as a multi-page PDF."""
     section("Schematic PDF")
     dir_engineering.mkdir(parents=True, exist_ok=True)
     run([
@@ -527,13 +491,7 @@ def export_schematic_pdf(sch_file: Path, dir_engineering: Path, prefix: str) -> 
 
 
 def export_3d_step(pcb_file: Path, dir_engineering: Path, prefix: str) -> None:
-    """
-    kibot: type: export_3d
-    include_silkscreen: true   --include-silkscreen
-    include_pads: true         --include-pads
-    include_soldermask: true   --include-soldermask
-    substitute_models: true    --subst-models
-    """
+    """Exports the 3D board model as a STEP file with silkscreen, pads, and soldermask."""
     section("3D Model (STEP)")
     run([
         "kicad-cli", "pcb", "export", "step",
@@ -553,12 +511,7 @@ def export_3d_step(pcb_file: Path, dir_engineering: Path, prefix: str) -> None:
 # ---------------------------------------------------------------------------
 
 def export_positions_openpnp(pcb_file: Path, dir_openpnp: Path, prefix: str) -> None:
-    """
-    kibot: type: position, bottom_negative_x: true, include_virtual: true
-    --bottom-negate-x mirrors bottom-side component X coordinates for OpenPNP.
-    Note: include_virtual has no kicad-cli flag; virtual footprints are included
-    by default when --smd-only is not passed.
-    """
+    """Exports pick-and-place CSV with bottom-side X coordinates mirrored for OpenPNP."""
     section("Pick and Place (OpenPNP)")
     dir_openpnp.mkdir(parents=True, exist_ok=True)
     run([
@@ -580,13 +533,9 @@ def _export_jlcpcb_gerbers(
     is_panel: bool,
 ) -> None:
     """
-    Gerbers matching jlcpcb.kibot.yml / panel_jlcpcb.kibot.yml:
-      use_protel_extensions: true    (omit --no-protel-ext)
-      gerber_precision: 4.6          --precision 6
-      plot_sheet_reference: false    (omit --include-border-title)
-      subtract_mask_from_silk: true  --subtract-soldermask
-      use_gerber_x2_attributes: false --no-netlist (X2 off by default without --no-netlist)
-      Non-panel: no paste layers.  Panel: include paste layers.
+    Exports gerbers formatted for JLCPCB: Protel extensions enabled, higher precision,
+    no border title, soldermask subtracted from silkscreen.
+    Panel mode includes paste layers; non-panel mode omits them.
     """
     dir_gerber = dir_jlcpcb / "gerber"
     dir_gerber.mkdir(parents=True, exist_ok=True)
@@ -613,11 +562,7 @@ def _export_jlcpcb_gerbers(
 
 
 def _export_jlcpcb_drill(pcb_file: Path, dir_jlcpcb: Path, prefix: str) -> None:
-    """
-    Drill matching jlcpcb.kibot.yml:
-      pth_and_npth_single_file: false  --excellon-separate-th
-      metric_units: true               --excellon-units mm
-    """
+    """Exports drill files for JLCPCB with PTH and NPTH in separate files."""
     dir_drill = dir_jlcpcb / "drill"
     dir_drill.mkdir(parents=True, exist_ok=True)
     run([
@@ -634,10 +579,9 @@ def _export_jlcpcb_drill(pcb_file: Path, dir_jlcpcb: Path, prefix: str) -> None:
 
 def _export_jlcpcb_pos(pcb_file: Path, dir_jlcpcb: Path, prefix: str) -> None:
     """
-    CPL matching jlcpcb.kibot.yml JLCPCB_position output.
+    Exports pick-and-place CSV and renames headers to match JLCPCB's expected format.
     kicad-cli outputs: Ref,Val,Package,PosX,PosY,Rot,Side
     JLCPCB expects:    Designator,Val,Package,Mid X,Mid Y,Rotation,Layer
-    Post-processes the CSV to rename headers accordingly.
     """
     import csv
 
@@ -671,10 +615,7 @@ def _export_jlcpcb_pos(pcb_file: Path, dir_jlcpcb: Path, prefix: str) -> None:
 
 
 def _export_jlcpcb_bom(sch_file: Path, dir_jlcpcb: Path, prefix: str) -> None:
-    """
-    BOM matching jlcpcb.kibot.yml JLCPCB_bom output:
-      columns: Value->Comment, References->Designator, Footprint, LCSC PN->LCSC Part #
-    """
+    """Exports BOM CSV with fields and labels formatted for JLCPCB upload."""
     run([
         "kicad-cli", "sch", "export", "bom",
         "--output", dir_jlcpcb / f"{prefix}_bom_jlc.csv",
@@ -682,7 +623,7 @@ def _export_jlcpcb_bom(sch_file: Path, dir_jlcpcb: Path, prefix: str) -> None:
         "Reference,Value,Footprint,QUANTITY,DNP,Manufacturer,MPN,LCSC PN,Note",
         "--labels",
         "Designator,Comment,Footprint,Quantity,Populate,Manufacturer,MPN,LCSC Part #,Note",
-        "--group-by", "Manufacturer,MPN",
+        "--group-by", "Footprint,DNP,Manufacturer,MPN",
         "--ref-range-delimiter", "", # Don't use a delimiter; list all designators in the Designator column.
         sch_file,
     ])
@@ -699,8 +640,7 @@ def export_jlcpcb(
     project_dir: Path | None = None,
 ) -> None:
     """
-    JLCPCB-specific outputs matching jlcpcb.kibot.yml (non-panel) and
-    panel_jlcpcb.kibot.yml (panel).
+    Generates all JLCPCB-specific outputs and packages them into a zip file.
 
     Non-panel: gerbers + drill + CPL + BOM -> {pcba_prefix}_jlcpcb.zip
     Panel:     gerbers + drill             -> {pcba_prefix}_jlcpcb_panel.zip
@@ -768,14 +708,14 @@ def copy_impedance_xlsx(project_dir: Path, mfg_dir: Path) -> None:
 
 
 def compress_manufacturing(out_base: Path, prefix: str) -> None:
-    """kibot: zip_manufacturing — source: manufacturing/**"""
+    """Zips the manufacturing/ output directory."""
     section("ZIP: Manufacturing")
     mfg_dir = out_base / "manufacturing"
     zip_directory(mfg_dir, out_base / "manufacturing" / f"{prefix}-manufacturing.zip")
 
 
 def compress_release(out_base: Path, prefix: str) -> None:
-    """kibot: zip_release — source: **"""
+    """Zips the entire output directory into a single release archive."""
     section("ZIP: Full Release")
     zip_tree(out_base, out_base / f"{prefix}.zip")
 

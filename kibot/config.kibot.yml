@@ -148,7 +148,7 @@ outputs:
       csv:
         hide_pcb_info: true
         quote_all: true
-      group_fields: [ "Manufacturer", "MPN" ]
+      group_fields: [ "Footprint", "DNP", "Manufacturer", "MPN" ]
       columns:
         - field: "References"
           name: "Reference"
