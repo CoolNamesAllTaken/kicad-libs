@@ -743,10 +743,10 @@ def main() -> None:
     # Read text variables from the .kicad_pro file, then allow env var overrides.
     text_vars = read_project_text_vars(pcb_file)
 
-    pcba_pn  = os.environ.get("PCBA_PN")  or text_vars.get("PCBA_PN",  "PROJ")
-    pcba_rev = os.environ.get("PCBA_REV") or text_vars.get("PCBA_REV", "A")
-    pcb_pn   = os.environ.get("PCB_PN")   or text_vars.get("PCB_PN",   pcba_pn)
-    pcb_rev  = os.environ.get("PCB_REV")  or text_vars.get("PCB_REV",  pcba_rev)
+    pcba_pn  = os.environ.get("PCBA_PN")  or text_vars.get("PCBA_PN")
+    pcba_rev = os.environ.get("PCBA_REV") or text_vars.get("PCBA_REV")
+    pcb_pn   = os.environ.get("PCB_PN")   or text_vars.get("PCB_PN")
+    pcb_rev  = os.environ.get("PCB_REV")  or text_vars.get("PCB_REV")
 
     # Assembly files: PCBA_PN-PCBA_REV-<filename>
     # Fab files:      PCB_PN-PCB_REV-<filename>
