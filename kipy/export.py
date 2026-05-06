@@ -276,7 +276,7 @@ def export_ipc_d356(pcb_file: Path, dir_fab: Path, prefix: str) -> None:
                  "in this KiCAD version.")
 
 
-def export_drawing(
+def export_fab_drawing(
     pcb_file: Path,
     dir_fab: Path,
     prefix: str,
@@ -782,13 +782,13 @@ def main() -> None:
     # ERC and DRC is skipped for panel exports (panel has no separate schematic).
     if not is_panel:
         preflight_erc(sch_file, out_base, pcba_prefix)
-        preflight_drc(pcb_file, out_base, pcb_prefix)
+        preflight_drc(pcb_file, out_base, pcba_prefix)
 
     # --- Fabrication (PCB_PN-PCB_REV prefix) ---
     export_gerbers(pcb_file, dir_gerber, copper_layers, pcb_prefix)
     export_drill(pcb_file, dir_drill, pcb_prefix)
     export_ipc_d356(pcb_file, dir_fab, pcb_prefix)
-    export_drawing(pcb_file, dir_fab, pcb_prefix, copper_layers)
+    export_fab_drawing(pcb_file, dir_fab, pcb_prefix, copper_layers)
 
     # --- Assembly (PCBA_PN-PCBA_REV prefix) — skipped for panel ---
     if not is_panel:
@@ -800,7 +800,7 @@ def main() -> None:
     # --- Engineering — skipped for panel ---
     if not is_panel:
         export_schematic_pdf(sch_file, dir_engineering, pcba_prefix)
-        export_3d_step(pcb_file, dir_engineering, pcb_prefix)
+        export_3d_step(pcb_file, dir_engineering, pcba_prefix)
 
     # --- Specialized — skipped for panel ---
     if not is_panel:
@@ -815,7 +815,7 @@ def main() -> None:
     copy_impedance_xlsx(project_dir, out_base / "manufacturing")
 
     # --- Compress ---
-    compress_manufacturing(out_base, pcb_prefix)
+    compress_manufacturing(out_base, pcba_prefix)
     compress_release(out_base, pcba_prefix)
 
     section(f"Export complete: {pcba_prefix} / {pcb_prefix}")
