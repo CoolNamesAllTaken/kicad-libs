@@ -1,4 +1,4 @@
-(footprint "GDEY027T91-FL02"
+(footprint "GDEY027T91_NoSlot"
 	(version 20260206)
 	(generator "pcbnew")
 	(generator_version "10.0")
@@ -7,7 +7,7 @@
 		(at 0 -0.5 0)
 		(unlocked yes)
 		(layer "F.SilkS")
-		(uuid "20f92020-ffea-42c4-b01c-fb77610a4dd6")
+		(uuid "4c307bca-686c-471c-bd41-692cabc3f4b1")
 		(effects
 			(font
 				(size 1 1)
@@ -15,11 +15,11 @@
 			)
 		)
 	)
-	(property "Value" "GDEY027T91-FL02"
+	(property "Value" "GDEY027T91_NoSlot"
 		(at 0 1 0)
 		(unlocked yes)
 		(layer "F.Fab")
-		(uuid "aeac1a3f-57de-4678-8f22-da4d7a0330d8")
+		(uuid "de7af200-2469-4a9a-841a-caf748d6b7cf")
 		(effects
 			(font
 				(size 1 1)
@@ -32,7 +32,7 @@
 		(unlocked yes)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "60a67e72-52a2-4798-b853-41039cd34404")
+		(uuid "810698bb-498f-4bb2-994e-c89ed0d1f693")
 		(effects
 			(font
 				(size 1 1)
@@ -45,7 +45,7 @@
 		(unlocked yes)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "50a089e6-3f86-451d-83e4-4e0baf2153b5")
+		(uuid "53afed73-99fa-429f-9c2c-d07663f477ba")
 		(effects
 			(font
 				(size 1 1)
@@ -64,7 +64,7 @@
 		)
 		(fill no)
 		(layer "F.SilkS")
-		(uuid "deffe709-2d16-4107-840c-213c3457b901")
+		(uuid "91215e39-7d59-4ddb-9ccf-cb8be6a286f2")
 	)
 	(fp_circle
 		(center 9.05 1.3)
@@ -75,7 +75,7 @@
 		)
 		(fill no)
 		(layer "Cmts.User")
-		(uuid "12445f4e-96f9-41cf-8715-b8dd3724b553")
+		(uuid "22aa6d56-b81a-41b6-8675-9e01f07cd602")
 	)
 	(fp_circle
 		(center 13.9 -9.1)
@@ -86,7 +86,7 @@
 		)
 		(fill no)
 		(layer "Cmts.User")
-		(uuid "bfc85b41-95dd-4c87-8b27-2dcdceee1b06")
+		(uuid "f58680c5-6b5c-460d-886d-d2d09d22b3da")
 	)
 	(fp_poly
 		(pts
@@ -98,7 +98,7 @@
 		)
 		(fill no)
 		(layer "B.CrtYd")
-		(uuid "72bae6ad-193b-4868-8460-64527f6acc81")
+		(uuid "494f379f-f85d-4464-915c-ccaf5e886641")
 	)
 	(fp_rect
 		(start -36 -23.75)
@@ -109,7 +109,7 @@
 		)
 		(fill no)
 		(layer "F.CrtYd")
-		(uuid "8c81ddd1-8fd3-447b-bde4-a7f1a7f94001")
+		(uuid "1ccecd6c-1b4d-4984-a3e2-951bdc31a113")
 	)
 	(fp_rect
 		(start -35.21 -22.9)
@@ -120,7 +120,7 @@
 		)
 		(fill no)
 		(layer "F.Fab")
-		(uuid "4ff48f95-5567-4dcc-9bc8-a30b7d02d203")
+		(uuid "37cbc42b-84e6-4d95-858d-3bc53b8567f7")
 	)
 	(fp_rect
 		(start -31.39 -19.095)
@@ -131,13 +131,13 @@
 		)
 		(fill no)
 		(layer "F.Fab")
-		(uuid "c374f449-4f7c-4020-a2d0-0faea14d9f41")
+		(uuid "817d2c52-ad82-45a5-a8dc-19a1dc5955c4")
 	)
 	(fp_text user "${REFERENCE}"
 		(at 0 2.5 0)
 		(unlocked yes)
 		(layer "F.Fab")
-		(uuid "786edc3c-e384-4641-891d-fb5655a09843")
+		(uuid "40a59718-1277-4b87-af1b-0025deb2bab4")
 		(effects
 			(font
 				(size 1 1)
@@ -145,15 +145,8 @@
 			)
 		)
 	)
-	(pad "" np_thru_hole circle
-		(at 37.2 -4)
-		(size 0.1 0.1)
-		(drill oval 2 25)
-		(layers "*.Cu" "*.Mask")
-		(uuid "4fef5b72-80a3-40d5-aa04-5dc162b29632")
-	)
 	(embedded_fonts no)
-	(model "${KICAD_LIBS_DIR}/lib_3d/Custom_Display/GDEY027T91-FL02.step"
+	(model "${KICAD_LIBS_DIR}/lib_3d/Custom_Display/GDEY027T91.step"
 		(offset
 			(xyz 0 0 0)
 		)
