@@ -1,4 +1,4 @@
-(footprint "Membrane_Button_Electrode_Illuminated_Round"
+(footprint "Membrane_Button_Electrode_Illuminated_Round_4.8ODx2.8ID"
 	(version 20260206)
 	(generator "pcbnew")
 	(generator_version "10.0")
@@ -9,7 +9,7 @@
 		(at 0 -3.5 0)
 		(unlocked yes)
 		(layer "F.SilkS")
-		(uuid "2c6c718f-c90e-4588-964a-752c35fbdd99")
+		(uuid "fee57022-d6b8-44b6-88f1-f58c9f905a99")
 		(effects
 			(font
 				(size 1 1)
@@ -17,11 +17,11 @@
 			)
 		)
 	)
-	(property "Value" "Membrane_Button_Electrode_Illuminated_Round"
+	(property "Value" "Membrane_Button_Electrode_Illuminated_Round_4.8ODx2.8ID"
 		(at 0 1 0)
 		(unlocked yes)
 		(layer "F.Fab")
-		(uuid "cffd87bc-3db4-4c8d-9b93-5eded3ba508c")
+		(uuid "18bf3779-fe46-4a48-ac2b-88577fce8919")
 		(effects
 			(font
 				(size 1 1)
@@ -34,7 +34,7 @@
 		(unlocked yes)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "f2a8748e-7cee-492b-8b8e-fac20109ff85")
+		(uuid "81b9b3a2-7e02-45ce-b430-60acaee51f8b")
 		(effects
 			(font
 				(size 1 1)
@@ -47,7 +47,7 @@
 		(unlocked yes)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "afdc5793-ed4a-4372-9428-307db0ce928c")
+		(uuid "626cc0e2-79f4-4e5a-b3bb-fef53a7833e5")
 		(effects
 			(font
 				(size 1 1)
@@ -66,7 +66,7 @@
 		)
 		(fill no)
 		(layer "F.Mask")
-		(uuid "a494564c-ba12-4158-8c49-24b66f22261e")
+		(uuid "62d07dcd-205b-4b22-82ee-c64badcecdaf")
 	)
 	(fp_rect
 		(start -1.7 -1.25)
@@ -77,7 +77,7 @@
 		)
 		(fill no)
 		(layer "F.SilkS")
-		(uuid "82c636b2-69f4-4750-acbe-ca1dec0a5fba")
+		(uuid "af1644fb-f0dd-4d0b-b6e0-c581e9ddd10c")
 	)
 	(fp_rect
 		(start -1.1 -1)
@@ -88,7 +88,7 @@
 		)
 		(fill no)
 		(layer "Cmts.User")
-		(uuid "fab8e456-ab29-4230-a61f-a1760e173cc1")
+		(uuid "c5ea60ea-0be6-49ef-adb8-32239bcd7a99")
 	)
 	(fp_circle
 		(center 0 0)
@@ -99,13 +99,13 @@
 		)
 		(fill no)
 		(layer "Cmts.User")
-		(uuid "97c8fdb6-8855-40de-9b42-3860d0125de3")
+		(uuid "b82e3f28-0cdc-4080-a85f-589e1046a221")
 	)
 	(fp_text user "${REFERENCE}"
 		(at 0 2.5 0)
 		(unlocked yes)
 		(layer "F.Fab")
-		(uuid "48c4c01c-cf5d-413e-a08a-722c5518cf57")
+		(uuid "c4322c31-2eca-436d-ad5f-f49c249103be")
 		(effects
 			(font
 				(size 1 1)
@@ -189,7 +189,7 @@
 				(width 0.5)
 			)
 		)
-		(uuid "6f87da16-182b-4475-9a62-ba9f23ae793a")
+		(uuid "35f05b2b-76ae-4b17-bdb0-bec026146363")
 	)
 	(pad "2" smd custom
 		(at 4.346664 1.164684)
@@ -267,7 +267,7 @@
 				(width 0.5)
 			)
 		)
-		(uuid "915bfbb9-0fd3-43b7-a90f-a8e44993ea4f")
+		(uuid "d24f57be-384d-46eb-ae03-83cf07f6925b")
 	)
 	(embedded_fonts no)
 )
