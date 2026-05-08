@@ -5,11 +5,23 @@
 	(layer "F.Cu")
 	(descr "Membrane button electrode with clearance for a 2020 LED")
 	(tags "membrane button")
+	(property "Reference" "REF**"
+		(at 0 -3.5 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "65b563d8-ec68-4b31-8143-65fa90d0a6b7")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.1)
+			)
+		)
+	)
 	(property "Value" "Membrane_Button_Electrode_Illuminated_Rectangular"
 		(at 0 1 0)
 		(unlocked yes)
 		(layer "F.Fab")
-		(uuid "60604f4c-a69a-4374-bf84-d6623f8a7610")
+		(uuid "09bead94-ebcb-4856-8bcc-b0a713a00605")
 		(effects
 			(font
 				(size 1 1)
@@ -22,7 +34,7 @@
 		(unlocked yes)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "e0abe25d-4393-4056-878d-beb5e56a6cc7")
+		(uuid "9933cd36-6093-4887-8822-cb13360e3055")
 		(effects
 			(font
 				(size 1 1)
@@ -35,7 +47,7 @@
 		(unlocked yes)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "953377b6-3a0a-4e52-bf66-c2df930bba3d")
+		(uuid "0a63b46c-0a52-4b41-a565-d06e6a87fd1a")
 		(effects
 			(font
 				(size 1 1)
@@ -43,19 +55,7 @@
 			)
 		)
 	)
-	(property "Reference" "REF**"
-		(at 0 -3.5 0)
-		(unlocked yes)
-		(layer "F.SilkS")
-		(uuid "e294576b-4a73-42fd-9b49-eae2f7f7280f")
-		(effects
-			(font
-				(size 1 1)
-				(thickness 0.1)
-			)
-		)
-	)
-	(attr smd)
+	(attr smd exclude_from_pos_files exclude_from_bom)
 	(duplicate_pad_numbers_are_jumpers no)
 	(fp_rect
 		(start -6.5 2)
@@ -66,7 +66,7 @@
 		)
 		(fill yes)
 		(layer "F.Mask")
-		(uuid "9df63ee1-91fa-4eb4-8b34-4b86d0c5ab99")
+		(uuid "d606f512-8921-47c6-ac52-4409f2210fe0")
 	)
 	(fp_rect
 		(start 2.5 -2)
@@ -77,7 +77,7 @@
 		)
 		(fill yes)
 		(layer "F.Mask")
-		(uuid "5244f70b-af86-4cb3-9513-fc1bd76429e3")
+		(uuid "0bf83a84-2f7e-41dc-a1e5-4258508d08a2")
 	)
 	(fp_rect
 		(start -1.3 -1.75)
@@ -88,7 +88,7 @@
 		)
 		(fill no)
 		(layer "F.SilkS")
-		(uuid "ce41ae93-a647-45e4-b054-fd666810dbec")
+		(uuid "2bb60dfd-b29e-4688-aa5d-55007c8ad1af")
 	)
 	(fp_rect
 		(start -10.5 -7)
@@ -99,7 +99,7 @@
 		)
 		(fill no)
 		(layer "Dwgs.User")
-		(uuid "96b8c30a-4cff-425b-a23e-cb37ea440b54")
+		(uuid "013674ec-e4d0-4f12-a972-b974dc05ea61")
 	)
 	(fp_rect
 		(start -8 -5.5)
@@ -110,7 +110,7 @@
 		)
 		(fill no)
 		(layer "Dwgs.User")
-		(uuid "e08c849f-4a43-4aec-a7ca-91dcc8345726")
+		(uuid "77c251eb-92a2-4c72-a8ba-37e2cfc51064")
 	)
 	(fp_rect
 		(start -7 -4.5)
@@ -121,7 +121,7 @@
 		)
 		(fill no)
 		(layer "Dwgs.User")
-		(uuid "1622397c-f0c1-4595-bf82-d755a9e32f83")
+		(uuid "2f1bb039-f834-48e3-8ba9-a3da0c75666a")
 	)
 	(fp_circle
 		(center -4.5 0)
@@ -132,7 +132,7 @@
 		)
 		(fill no)
 		(layer "Dwgs.User")
-		(uuid "eaa42c61-0757-4af4-9eb8-89d52d9498a3")
+		(uuid "28fd6227-859d-427b-9ed0-8926e79c19c6")
 	)
 	(fp_circle
 		(center 4.5 0)
@@ -143,7 +143,7 @@
 		)
 		(fill no)
 		(layer "Dwgs.User")
-		(uuid "86327510-037f-4a22-ba49-71b3f67cff0a")
+		(uuid "ef3c8975-68df-4d19-aeed-d4184cc68d4f")
 	)
 	(fp_rect
 		(start -1 -1.1)
@@ -154,13 +154,13 @@
 		)
 		(fill no)
 		(layer "Cmts.User")
-		(uuid "deb2dcaa-90cf-40fb-b53a-b5d6693e33f2")
+		(uuid "f3c4fc7f-ea3a-4b0e-a80d-b2b832c21e8a")
 	)
 	(fp_text user "${REFERENCE}"
 		(at 0 2.25 0)
 		(unlocked yes)
 		(layer "F.Fab")
-		(uuid "931a548c-5bfb-4316-8de0-362772d56cee")
+		(uuid "ed7845e0-2162-4255-a3bb-9e977cc70ae5")
 		(effects
 			(font
 				(size 1 1)
@@ -233,7 +233,7 @@
 				(width 0.25)
 			)
 		)
-		(uuid "b67e790e-25e8-4be4-8da5-d4c8d4aa8c1b")
+		(uuid "c8726d82-97c9-4353-99ac-ff191ec4e8c5")
 	)
 	(pad "2" smd custom
 		(at 0 3)
@@ -320,11 +320,11 @@
 				(width 0.25)
 			)
 		)
-		(uuid "0128579f-97bf-4d78-ad76-49a0a051eece")
+		(uuid "7ab3df59-cbc1-4150-a780-d2aa4b821990")
 	)
 	(zone
 		(layer "F.Cu")
-		(uuid "946aac1d-d449-47f0-b658-285cb3b4a120")
+		(uuid "e16f588e-da10-4135-ae61-49ab714486cc")
 		(name "GND_Pour_Keepout")
 		(hatch edge 0.5)
 		(connect_pads
