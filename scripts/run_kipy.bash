@@ -72,6 +72,7 @@ fi
 echo "Bash command: ${bash_command[*]}"
 
 docker run --rm -it \
+    --platform linux/amd64 \
     --workdir="/projects" \
     --volume="$KICAD_LIBS_DIR":"$container_kicad_libs_dir" \
     --volume=$(pwd):"/projects" \
