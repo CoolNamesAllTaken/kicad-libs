@@ -8,7 +8,7 @@
 	(property "Reference" "REF**"
 		(at 0 -4.65 0)
 		(layer "F.SilkS")
-		(uuid "6480bc34-e909-46f3-bf7a-78841dae74e6")
+		(uuid "c5a1aa07-2b91-4666-9744-c1b18c8facac")
 		(effects
 			(font
 				(size 1 1)
@@ -19,7 +19,7 @@
 	(property "Value" "Mounting_SMD_Standoff_Sinhoo_M2.5_H5mm_SMTSO2550"
 		(at 0 4.65 0)
 		(layer "F.Fab")
-		(uuid "555b0f8e-0c36-407e-8091-7ea4d66de575")
+		(uuid "afebfc88-2e58-42e0-ba18-598c2f316405")
 		(effects
 			(font
 				(size 1 1)
@@ -31,7 +31,7 @@
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "860b5675-327c-413e-bda3-bfdb3f7385c6")
+		(uuid "821b46d7-94af-4794-96b4-1acba024be94")
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -42,7 +42,7 @@
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "437f8edf-db84-4c49-8265-30730be929d1")
+		(uuid "af9fb876-cbf2-4a09-906c-0c8f6f9cb634")
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -53,7 +53,7 @@
 		(at 0 0 0)
 		(layer "F.SilkS")
 		(hide yes)
-		(uuid "634471d5-0a9b-48b0-8647-68b678aebea4")
+		(uuid "2bb13724-4c5c-4755-9130-835493e68d1a")
 		(effects
 			(font
 				(size 1 1)
@@ -72,7 +72,7 @@
 			(type solid)
 		)
 		(layer "F.Paste")
-		(uuid "8e945876-4e66-4695-ab1b-9ee3ed470b4a")
+		(uuid "3dfade0e-aa6e-4327-a494-097febeed17f")
 	)
 	(fp_arc
 		(start 0 -2.61)
@@ -83,7 +83,7 @@
 			(type solid)
 		)
 		(layer "F.Paste")
-		(uuid "0e3fd949-de88-4ae5-bf29-5d7259d5972a")
+		(uuid "2092b475-1b99-4303-a0e2-51b958d9671e")
 	)
 	(fp_arc
 		(start 0 2.61)
@@ -94,7 +94,7 @@
 			(type solid)
 		)
 		(layer "F.Paste")
-		(uuid "a03aafab-db16-480c-bc10-b607a942184c")
+		(uuid "c7fd9945-399a-42ca-b42d-4fd2d30e7e83")
 	)
 	(fp_arc
 		(start 2.61 0)
@@ -105,7 +105,7 @@
 			(type solid)
 		)
 		(layer "F.Paste")
-		(uuid "a1bed916-e6b5-4a43-83b9-631361bf0f0f")
+		(uuid "2a92c8a0-0f7e-456e-b880-6431a29ce5bb")
 	)
 	(fp_circle
 		(center 0 0)
@@ -116,7 +116,7 @@
 		)
 		(fill no)
 		(layer "F.CrtYd")
-		(uuid "6f6f9910-de66-45fe-b125-2884e60e4d06")
+		(uuid "2b077ae1-d8f0-4121-a80e-584787be1e41")
 	)
 	(fp_circle
 		(center 0 0)
@@ -127,12 +127,12 @@
 		)
 		(fill no)
 		(layer "F.Fab")
-		(uuid "4e3cfcc2-f717-49ef-a707-4c0480144d8d")
+		(uuid "8790d571-32c0-45d3-b9e9-26e84e4eff6e")
 	)
 	(fp_text user "${REFERENCE}"
 		(at 0 0 0)
 		(layer "F.Fab")
-		(uuid "50859dfa-b59b-4775-9304-1fd3e6b380bc")
+		(uuid "fe10a04e-c749-4c24-aaa6-a217a18c525a")
 		(effects
 			(font
 				(size 1 1)
@@ -145,29 +145,29 @@
 		(size 4.22 4.22)
 		(drill 4.22)
 		(layers "*.Cu" "*.Mask")
-		(uuid "cc947c58-06ab-418d-a9cd-b47a87e93955")
+		(uuid "dcd43a90-5738-458d-8873-3f56f5712ecc")
 	)
 	(pad "1" smd circle
 		(at -2.61 0)
-		(size 0.992 0.992)
+		(size 0.5 0.5)
 		(layers "F.Cu")
-		(uuid "94ad7f5c-cbd7-4ffa-ab0b-4f17a07e2519")
+		(uuid "40d7e32c-e3d7-41eb-9e37-bc1788b60cde")
 	)
 	(pad "1" smd circle
 		(at 0 -2.61)
-		(size 0.992 0.992)
+		(size 0.5 0.5)
 		(layers "F.Cu")
-		(uuid "fad4bb54-f4b3-4906-9eb6-290c6ba165f4")
+		(uuid "bfda21d0-d2a6-46bc-8108-64b1c1a15195")
 	)
 	(pad "1" smd circle
 		(at 0 2.61)
-		(size 0.992 0.992)
+		(size 0.5 0.5)
 		(layers "F.Cu")
-		(uuid "d42fff95-640b-40bd-a707-b11feb4bc4cb")
+		(uuid "5272f391-7ad2-4ea2-a61e-5e09efc9f28a")
 	)
 	(pad "1" smd custom
 		(at 2.61 0)
-		(size 0.98 0.98)
+		(size 0.5 0.5)
 		(layers "F.Cu" "F.Mask")
 		(options
 			(clearance outline)
@@ -181,7 +181,7 @@
 				(fill no)
 			)
 		)
-		(uuid "d6f35044-163b-4e4d-8989-123c5c58cd74")
+		(uuid "9fa7d236-ad64-49d8-80ef-c2c86403cfca")
 	)
 	(embedded_fonts no)
 	(model "${KICAD_LIBS_DIR}/lib_3d/Custom_Mounting/Sinhoo_SMTSO2550.step"
