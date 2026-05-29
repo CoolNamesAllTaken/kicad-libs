@@ -1,0 +1,75 @@
+(footprint "PCB_PN_REV_Tiny_Silkscreen_NoCourtyard"
+	(version 20260206)
+	(generator "pcbnew")
+	(generator_version "10.0")
+	(layer "F.Cu")
+	(property "Reference" "REF**"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Cu")
+		(hide yes)
+		(uuid "c6782f50-c598-4ad1-9f54-c38cc887699c")
+		(effects
+			(font
+				(size 1.5 1.5)
+				(thickness 0.3)
+			)
+		)
+	)
+	(property "Value" "PCB_PN_REV"
+		(at 0 -2.1 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "aefc4b34-da9e-4ef2-9c81-0e139e6f5618")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "8465293f-9b79-4bac-b066-2b5a80099b98")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "4bd3cbf2-0016-460d-998f-a7c8405a4506")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr exclude_from_pos_files allow_soldermask_bridges)
+	(duplicate_pad_numbers_are_jumpers no)
+	(fp_text user "${PCB_PN}-${PCB_REV}"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "4fa77da2-e412-4e58-9e77-14060d94faff")
+		(effects
+			(font
+				(size 0.5 0.5)
+				(thickness 0.125)
+			)
+		)
+	)
+	(group ""
+		(uuid "1be45ae6-79a7-4dfd-b027-7d86a3d481e6")
+		(members "4fa77da2-e412-4e58-9e77-14060d94faff")
+	)
+	(embedded_fonts no)
+)
